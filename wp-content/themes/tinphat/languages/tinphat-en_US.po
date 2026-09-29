@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tin Phat Construction 1.0.0\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Khách hàng"
+msgstr "Client"
+
+msgid "Vị trí"
+msgstr "Location"
+
+msgid "Phạm vi công việc"
+msgstr "Scope of work"
+
+msgid "Menu chính"
+msgstr "Primary menu"
+
+msgid "Menu chân trang"
+msgstr "Footer menu"
+
+msgid "Dự án"
+msgstr "Projects"
+
+msgid "Loại dự án"
+msgstr "Project type"
+
+msgid "Văn hóa"
+msgstr "Culture"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Tuyển dụng"
+msgstr "Careers"
+
+msgid "Đối tác"
+msgstr "Partners"
+
+msgid "Nhóm đối tác"
+msgstr "Partner group"
+
+msgid "Tín Phát — Số liệu"
+msgstr "Tin Phat — Key numbers"
+
+msgid "Tín Phát — Ô số liệu"
+msgstr "Tin Phat — Number item"
+
+msgid "Tín Phát — Dự án"
+msgstr "Tin Phat — Projects"
+
+msgid "Tiêu đề"
+msgstr "Heading"
+
+msgid "Tiêu đề phụ"
+msgstr "Subheading"
+
+msgid "Nhãn"
+msgstr "Label"
+
+msgid "Giá trị (chỉ số)"
+msgstr "Value (number only)"
+
+msgid "Đơn vị"
+msgstr "Unit"
+
+msgid "Số dự án hiển thị"
+msgstr "Number of projects"
+
+msgid "Lọc theo loại"
+msgstr "Filter by type"
+
+msgid "Tất cả"
+msgstr "All"
+
+msgid "Thêm %s mới"
+msgstr "Add new %s"
+
+msgid "Sửa %s"
+msgstr "Edit %s"
+
+msgid "Tìm %s"
+msgstr "Search %s"
+
+msgid "Không có %s nào"
+msgstr "No %s found"
+
+msgid "Tất cả %s"
+msgstr "All %s"
+
+#: template-parts/news/featured.php
+msgid "Xem thêm"
+msgstr "Read more"
+
+#: home.php
+msgid "Tin tức khác"
+msgstr "Other news"

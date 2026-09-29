@@ -1,0 +1,198 @@
+/**
+ * Danh sách tin tức và thẻ bài viết.
+ */
+
+.cc-root .tp-news-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-news-filter__item {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-decoration: none;
+  background: #f3f4f7;
+  border-radius: 999px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.cc-root .tp-news-filter__item:hover {
+  background: #e6e9f0;
+  color: #0f145b;
+}
+
+.cc-root .tp-news-filter__item.is-active {
+  background: #e17126;
+  color: #fff;
+}
+
+/* ----- Lưới bài viết ----- */
+.cc-root .tp-news {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.cc-root .tp-news__link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cc-root .tp-news__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, #eef1f6, #dfe4ec);
+}
+
+.cc-root .tp-news__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cc-root .tp-news__link:hover .tp-news__img {
+  transform: scale(1.05);
+}
+
+/* Ngày đăng nổi trên ảnh */
+.cc-root .tp-news__date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  background: #e17126;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.cc-root .tp-news__day {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.cc-root .tp-news__month {
+  font-size: 0.72rem;
+  opacity: 0.9;
+}
+
+.cc-root .tp-news__body {
+  padding-top: 0.9rem;
+}
+
+.cc-root .tp-news__cat {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1569b7;
+}
+
+.cc-root .tp-news__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #0f145b;
+}
+
+.cc-root .tp-news__link:hover .tp-news__title {
+  color: #e17126;
+}
+
+.cc-root .tp-news__excerpt {
+  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #6b7280;
+  text-align: left;
+}
+
+.cc-root .tp-news__more {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e17126;
+}
+
+/* ----- Phân trang ----- */
+.cc-root .navigation.pagination {
+  margin-top: 2.5rem;
+}
+
+.cc-root .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.cc-root .nav-links .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.6rem;
+  font-size: 0.88rem;
+  color: #374151;
+  text-decoration: none;
+  background: #f3f4f7;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.cc-root .nav-links .page-numbers:hover {
+  background: #e6e9f0;
+}
+
+.cc-root .nav-links .page-numbers.current {
+  background: #0f145b;
+  color: #fff;
+}
+
+/* ----- Bài viết đơn ----- */
+.cc-root .tp-single__meta {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-single__meta span + span::before {
+  content: "·";
+  margin: 0 0.5rem;
+}
+
+/* ----- Tương phản ô ngày trên thẻ tin -----
+ * Template gốc để nhãn tháng #CCCCCC trên nền trắng (tỉ lệ 1.61) và
+ * trắng trên nền cam #e17126 (3.19) — đều dưới ngưỡng WCAG AA 4.5 cho
+ * chữ nhỏ. Chỉnh lại tông đậm hơn, giữ nguyên bố cục.
+ */
+.cc-root .news__page .other_post .item_post .meta_post .date_post .month,
+.cc-root .news__page .post_featured .post_sidebar .item_post_sb .meta_post .date_post .month,
+.cc-root .latest_news_section .item_post .meta_post .date_post .month {
+  color: #6b7280;
+}
+
+.cc-root .news__page .post_featured .item_post > .meta_post .date_post {
+  background: #b3541c;
+  border-color: #b3541c;
+}
+
+.cc-root .news__page .post_featured .item_post > .meta_post .date_post .month {
+  color: #fff;
+}

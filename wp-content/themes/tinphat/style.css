@@ -1,0 +1,13 @@
+/*
+Theme Name:  Tín Phát Construction
+Theme URI:   https://tinphatcons.com
+Author:      Di Dong Viet Team
+Description: Theme cho CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT.
+             Độc lập, không phụ thuộc theme cha — toàn bộ CSS tự chứa.
+Version:     1.0.0
+Text Domain: tinphat
+Requires PHP: 8.1
+License:     GPL-2.0-or-later
+*/
+
+/* CSS build ra assets/dist/main.css — không viết style trực tiếp ở file này. */

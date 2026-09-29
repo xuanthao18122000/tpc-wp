@@ -1,0 +1,5 @@
+# MySQL 8.0 local dùng chứng chỉ tự ký, client mariadb trong wp-cli
+# mặc định xác thực TLS nên báo lỗi. Local dev thì tắt là đủ.
+[client]
+ssl = 0
+disable-ssl-verify-server-cert

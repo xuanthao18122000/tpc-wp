@@ -1,0 +1,329 @@
+/**
+ * Menu desktop, chuyển ngôn ngữ, tìm kiếm, drawer mobile.
+ *
+ * CSS gốc của template không có phần menu desktop (bản Next.js dựa vào
+ * Bootstrap utilities), nên viết bổ sung để khớp thiết kế.
+ */
+
+.cc-root #header_site {
+  background: #fff;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
+}
+
+.cc-root #header_site .menu_site {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-root #header_site .menu_site > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-root #header_site .menu_site > li > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #1f2937;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.cc-root #header_site .menu_site > li > a:hover,
+.cc-root #header_site .menu_site > li.current-menu-item > a,
+.cc-root #header_site .menu_site > li.current-menu-parent > a,
+.cc-root #header_site .menu_site > li.current-menu-ancestor > a {
+  color: #e17126;
+}
+
+.cc-root #header_site .menu_site .cc-caret {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.cc-root #header_site .menu_site .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  min-width: 15rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  background: #fff;
+  border-top: 3px solid #e17126;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 12%);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.cc-root #header_site .menu_site > li:hover > .sub-menu,
+.cc-root #header_site .menu_site > li:focus-within > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cc-root #header_site .menu_site .sub-menu li {
+  margin: 0;
+  list-style: none;
+}
+
+.cc-root #header_site .menu_site .sub-menu a {
+  display: block;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.875rem;
+  color: #374151;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cc-root #header_site .menu_site .sub-menu a:hover {
+  background: #f6f7fb;
+  color: #e17126;
+}
+
+.cc-root #header_site .top_line {
+  border-bottom: 1px solid #eef0f4;
+  font-size: 0.8rem;
+}
+
+.cc-root #header_site .top_line .social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-root #header_site .top_line .social li {
+  margin: 0;
+  list-style: none;
+}
+
+.cc-root #header_site .top_line .social a {
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.cc-root #header_site .top_line .social a:hover {
+  color: #e17126;
+}
+
+.cc-root #header_site .logo_site img {
+  max-height: 52px;
+  width: auto;
+}
+
+.cc-root .menu_lang {
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-root .menu_lang > li {
+  position: relative;
+  list-style: none;
+}
+
+.cc-root .menu_lang > li > a {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.cc-root .menu_lang > li > ul {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 60;
+  min-width: 4rem;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 12%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s;
+}
+
+.cc-root .menu_lang > li:hover > ul,
+.cc-root .menu_lang > li:focus-within > ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cc-root .menu_lang > li > ul a {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  color: #374151;
+  text-decoration: none;
+}
+
+.cc-root .menu_lang > li > ul a:hover {
+  color: #e17126;
+}
+
+.cc-root .search_btn {
+  position: relative;
+}
+
+.cc-root .search_btn > a img {
+  width: 20px;
+  height: 20px;
+}
+
+.cc-root .search_form {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 60;
+  display: none;
+  width: 17rem;
+  padding: 0.75rem;
+  background: #fff;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 15%);
+}
+
+.cc-root .search_form .form-control {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d8dbe3;
+  font-size: 0.875rem;
+}
+
+.screen-reader-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+.cc-root .hamburger_btn {
+  display: inline-block;
+  padding: 0.5rem;
+  color: #1f2937;
+}
+
+.cc-root .hamburger-icon {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 18px;
+}
+
+.cc-root .hamburger-icon span {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentcolor;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.cc-root .hamburger-icon span:nth-child(1),
+.cc-root .hamburger-icon span:nth-child(2) { top: 0; }
+
+.cc-root .hamburger-icon span:nth-child(3),
+.cc-root .hamburger-icon span:nth-child(4) { top: 8px; }
+
+.cc-root .hamburger-icon span:nth-child(5),
+.cc-root .hamburger-icon span:nth-child(6) { top: 16px; }
+
+.cc-root .hamburger-icon.open span:nth-child(1),
+.cc-root .hamburger-icon.open span:nth-child(6) { transform: rotate(45deg) translate(5px, 5px); }
+
+.cc-root .hamburger-icon.open span:nth-child(2),
+.cc-root .hamburger-icon.open span:nth-child(5) { opacity: 0; }
+
+.cc-root .hamburger-icon.open span:nth-child(3),
+.cc-root .hamburger-icon.open span:nth-child(4) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.cc-root .overlay_menu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgb(0 0 0 / 45%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+.cc-root .overlay_menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cc-root #menu_mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: min(20rem, 86vw);
+  height: 100%;
+  padding: 1.5rem 1.25rem;
+  overflow-y: auto;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+}
+
+.cc-root #menu_mobile.open {
+  transform: translateX(0);
+}
+
+.cc-root #menu_mobile .sub-menu {
+  display: none;
+  padding-left: 0.75rem;
+}
+
+.cc-root #menu_mobile .sub-menu.d-block {
+  display: block;
+}
+
+/* ----- Tương phản màu (WCAG AA) ----- */
+
+/* Số hotline ở top bar: template để #ccc, tỉ lệ chỉ 1.6 trên nền trắng. */
+.cc-root #header_site .top_line .social a.fw-bold {
+  color: #374151;
+}
+
+.cc-root #header_site .top_line .social a.fw-bold:hover {
+  color: #b3541c;
+}
+
+/* Menu đang chọn: #e17126 chỉ đạt 3.18; đậm hơn để lên 4.5+. */
+.cc-root #header_site .menu_site > li.current-menu-item > a,
+.cc-root #header_site .menu_site > li.current-menu-parent > a,
+.cc-root #header_site .menu_site > li.current-menu-ancestor > a,
+.cc-root #header_site .menu_site > li > a:hover {
+  color: #b3541c;
+}
+
+.cc-root #header_site .menu_site .sub-menu a:hover {
+  color: #b3541c;
+}

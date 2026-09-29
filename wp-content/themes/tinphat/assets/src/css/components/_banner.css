@@ -1,0 +1,43 @@
+/**
+ * Banner trang chủ.
+ *
+ * Dùng lại class #banner_site .item .meta_info của template;
+ * đây chỉ là phần bổ sung cho Swiper và chiều cao ảnh.
+ */
+
+.cc-root #banner_site {
+  overflow: hidden;
+}
+
+.cc-root #banner_site .tp-banner__slider {
+  overflow: visible;
+}
+
+.cc-root #banner_site .item > img,
+.cc-root #banner_site .item > a > img {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 45vw, 690px);
+  object-fit: cover;
+}
+
+/* Nút điều hướng */
+.cc-root #banner_site .swiper-button-prev,
+.cc-root #banner_site .swiper-button-next {
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  background: rgb(15 20 91 / 70%);
+  transition: background 0.2s ease;
+}
+
+.cc-root #banner_site .swiper-button-prev:hover,
+.cc-root #banner_site .swiper-button-next:hover {
+  background: #e17126;
+}
+
+.cc-root #banner_site .swiper-button-prev::after,
+.cc-root #banner_site .swiper-button-next::after {
+  font-size: 1rem;
+  font-weight: 700;
+}

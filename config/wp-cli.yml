@@ -1,0 +1,9 @@
+# WP-CLI đọc file này để lấy tham số mặc định cho từng lệnh.
+# MySQL 8.0 trên máy host dùng chứng chỉ tự ký, nên tắt xác thực TLS
+# cho các lệnh gọi mariadb-dump / mariadb-check.
+db check:
+  skip-ssl: true
+db export:
+  skip-ssl: true
+db import:
+  skip-ssl: true

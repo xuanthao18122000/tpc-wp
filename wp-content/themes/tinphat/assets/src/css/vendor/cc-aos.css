@@ -1,0 +1,40 @@
+/* Scoped AOS (animate-on-scroll) — mirrors centralcons.vn AOS: fade-up/left/right + stagger delays */
+.cc-root [data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.25, 0.4, 0.25, 1);
+  will-change: opacity, transform;
+}
+.cc-root [data-aos="fade-up"] {
+  transform: translate3d(0, 60px, 0);
+}
+.cc-root [data-aos="fade-right"] {
+  transform: translate3d(-60px, 0, 0);
+}
+.cc-root [data-aos="fade-left"] {
+  transform: translate3d(60px, 0, 0);
+}
+.cc-root [data-aos].aos-animate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+/* stagger delays used on the key-number stats */
+.cc-root [data-aos-delay="100"].aos-animate {
+  transition-delay: 0.1s;
+}
+.cc-root [data-aos-delay="200"].aos-animate {
+  transition-delay: 0.2s;
+}
+.cc-root [data-aos-delay="300"].aos-animate {
+  transition-delay: 0.3s;
+}
+
+/* No-JS / reduced-motion safety: keep content visible */
+@media (prefers-reduced-motion: reduce) {
+  .cc-root [data-aos] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

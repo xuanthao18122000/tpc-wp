@@ -1,0 +1,865 @@
+/**
+ * Trang nội dung: bìa, breadcrumb, bảng, trích dẫn.
+ */
+
+.cc-root .page_cover {
+  position: relative;
+}
+
+.cc-root .page_cover .bg_cover img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 26vw, 340px);
+  object-fit: cover;
+}
+
+.cc-root .page_cover .meta_info {
+  /* Template gốc căn giữa bằng translate; chỉ bổ sung bề rộng và bóng chữ. */
+  width: min(1320px, 90%);
+  text-shadow: 0 2px 12px rgb(0 0 0 / 45%);
+}
+
+.cc-root .page_cover .meta_info h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.cc-root .breadcrumb_site {
+  font-size: 0.85rem;
+}
+
+.cc-root .breadcrumb_site a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.cc-root .breadcrumb_site a:hover {
+  text-decoration: underline;
+}
+
+.cc-root .tp-page__body {
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #374151;
+}
+
+.cc-root .tp-page__body p {
+  margin-bottom: 1.1rem;
+  text-align: justify;
+}
+
+.cc-root .tp-lead {
+  margin-bottom: 0.35rem;
+  color: #e17126;
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  font-weight: 700;
+}
+
+.cc-root .tp-lead-desc {
+  margin-bottom: 2rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.cc-root .tp-mission {
+  margin: 2.5rem 0 1.25rem;
+  color: #e17126;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+}
+
+/* ----- Bảng thông tin công ty ----- */
+.cc-root .tp-company-table {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.cc-root .tp-company-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.cc-root .tp-company-table tr td:first-child {
+  width: 34%;
+  font-weight: 600;
+  color: #0f145b;
+  background: #f7f8fb;
+}
+
+/* ----- Trích dẫn ----- */
+.cc-root .tp-quote {
+  margin: 0 0 2rem;
+  padding: 1.5rem 1.75rem;
+  background: #f7f8fb;
+  border-left: 4px solid #e17126;
+}
+
+.cc-root .tp-quote p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #0f145b;
+  text-align: left;
+}
+
+.cc-root .tp-quote cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.cc-root .tp-quote cite strong {
+  /* Chữ nhỏ: dùng tông cam đậm để đạt tương phản AA. */
+  color: #b3541c;
+}
+
+/* ----- Danh sách ----- */
+.cc-root .tp-list {
+  margin: 0 0 1.5rem 1.25rem;
+  padding: 0;
+  list-style: disc;
+}
+
+.cc-root .tp-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Tầm nhìn & giá trị cốt lõi =====
+ *
+ * Bố cục theo centralcons: khối tầm nhìn có ảnh lệch phải và hộp xanh
+ * chồng lên bên trái; lưới giá trị là mosaic 3 cột, ảnh chiếm 2 cột.
+ */
+
+/* Trang chạy full-width: bù lại giới hạn của .tp-page__body. */
+.cc-root .tp-vision-page {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  max-width: 100vw;
+  padding-block: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-vision-page__inner {
+  width: min(1320px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* ----- Khối tầm nhìn: ảnh phải + hộp xanh chồng trái ----- */
+.cc-root .tp-vision-hero {
+  position: relative;
+  margin-block: clamp(1.75rem, 4vw, 3rem);
+}
+
+.cc-root .tp-vision-hero__media {
+  margin-left: auto;
+  width: 66.667%;
+}
+
+.cc-root .tp-vision-hero__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 856 / 466;
+  object-fit: cover;
+}
+
+.cc-root .tp-vision-hero__box {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 40%;
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 3rem);
+  background: #0f145b;
+  transform: translateY(-50%);
+}
+
+.cc-root .tp-vision-hero__box p {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* ----- Mosaic giá trị cốt lõi -----
+ * 3 cột đều nhau, ô ảnh span 2 cột; mọi ô là hình vuông để
+ * ảnh và thẻ chữ khớp nhau như bên centralcons.
+ */
+.cc-root .tp-value-grid {
+  display: grid;
+  /* minmax(0,1fr): mặc định 1fr là min-content, đoạn mô tả dài sẽ
+     kéo cột rộng ra và làm tràn ngang. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.cc-root .tp-value-grid__media {
+  grid-column: span 2;
+}
+
+/* Thẻ chữ là hình vuông; ô ảnh chiếm 2 cột nên tỉ lệ 2:1 để cao
+   bằng đúng một hàng, giống lưới bên centralcons. */
+.cc-root .tp-value-card {
+  aspect-ratio: 1;
+}
+
+.cc-root .tp-value-grid__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2;
+  object-fit: cover;
+}
+
+.cc-root .tp-value-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: #e9e9e9;
+}
+
+.cc-root .tp-value-card__icon {
+  height: 70px;
+  margin-bottom: 1rem;
+}
+
+.cc-root .tp-value-card__icon img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cc-root .tp-value-card__num {
+  color: #e17126;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.cc-root .tp-value-card h3 {
+  margin: 0 0 clamp(0.75rem, 1.5vw, 1.5rem);
+  color: #0f145b;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-weight: 700;
+}
+
+.cc-root .tp-value-card p {
+  margin: 0;
+  color: #333;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* Tablet: ảnh vẫn span 2 cột nhưng lưới còn 2 cột. */
+@media (max-width: 991px) {
+  .cc-root .tp-value-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .cc-root .tp-vision-hero__media {
+    width: 100%;
+  }
+
+  .cc-root .tp-vision-hero__box {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+}
+
+/* Mobile: xếp dọc, ô chữ cao theo nội dung để không bị cắt. */
+@media (max-width: 575px) {
+  .cc-root .tp-value-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-root .tp-value-grid__media {
+    grid-column: span 1;
+  }
+
+  /* Một cột: ảnh không còn span 2 nên dùng tỉ lệ ngang vừa phải. */
+  .cc-root .tp-value-grid__media img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .cc-root .tp-value-card {
+    aspect-ratio: auto;
+  }
+}
+
+/* ===== Đối tác & khách hàng ===== */
+
+.cc-root .tp-logo-group {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.cc-root .tp-logo-group__head {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cc-root .tp-logo-group__head h2 {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #0f145b;
+  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-logo-group__head::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.cc-root .tp-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1px;
+  background: #e5e7eb;
+  border: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-logo-grid__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  padding: 1rem;
+  background: #fff;
+}
+
+.cc-root .tp-logo-grid__cell img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Logo nhiều màu về một tông xám, sáng lên khi hover — giống centralcons. */
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition: filter 0.25s, opacity 0.25s;
+}
+
+.cc-root .tp-logo-grid__cell:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+/* Ô trống giữ lưới thẳng hàng khi số logo không chia hết. */
+.cc-root .tp-logo-grid__cell--empty {
+  background: #fafafa;
+}
+
+/* ----- Lĩnh vực phục vụ (thẻ có ảnh) ----- */
+.cc-root .tp-sectors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.cc-root .tp-sector {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-sector img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.cc-root .tp-sector__body {
+  flex: 1 1 auto;
+  padding: 1.25rem 1.35rem 1.5rem;
+}
+
+.cc-root .tp-sector h3 {
+  margin: 0 0 0.75rem;
+  color: #0f145b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-sector ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.cc-root .tp-sector li {
+  margin-bottom: 0.35rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: #4b5563;
+}
+
+/* ----- Khối CTA cuối trang ----- */
+.cc-root .tp-cta {
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  text-align: center;
+  background: #f7f8fb;
+  border-top: 3px solid #e17126;
+}
+
+.cc-root .tp-cta h2 {
+  margin: 0 0 0.6rem;
+  color: #0f145b;
+  font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+  font-weight: 700;
+}
+
+.cc-root .tp-cta p {
+  margin: 0 0 1.5rem;
+  color: #4b5563;
+  text-align: center;
+}
+
+.cc-root .tp-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+.cc-root .tp-btn {
+  display: inline-block;
+  padding: 0.8rem 1.9rem;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background: #e17126;
+  transition: background-color 0.25s;
+}
+
+.cc-root .tp-btn:hover {
+  color: #fff;
+  background: #b3541c;
+}
+
+.cc-root .tp-btn--outline {
+  color: #0f145b;
+  background: transparent;
+  border: 1px solid #0f145b;
+}
+
+.cc-root .tp-btn--outline:hover {
+  color: #fff;
+  background: #0f145b;
+}
+
+/* ===== Trang liên hệ ===== */
+
+.cc-root .tp-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-contact__card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: #f7f8fb;
+  border-top: 3px solid #e17126;
+}
+
+.cc-root .tp-contact__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cc-root .tp-contact__icon img {
+  width: 1.05rem;
+  height: 1.05rem;
+  object-fit: contain;
+}
+
+.cc-root .tp-contact__card h3 {
+  margin: 0 0 0.5rem;
+  color: #0f145b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-contact__card p,
+.cc-root .tp-contact__card a {
+  margin: 0;
+  color: #374151;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  text-align: left;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.cc-root .tp-contact__card a:hover {
+  color: #b3541c;
+  text-decoration: underline;
+}
+
+/* ----- Bản đồ ----- */
+.cc-root .tp-map {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 38vw, 420px);
+  border: 0;
+}
+
+/* ----- Form liên hệ ----- */
+.cc-root .tp-form-wrap {
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  background: #f7f8fb;
+}
+
+/* Form dựng bằng WPForms; các rule dưới chỉ chỉnh lại cho khớp
+   giao diện, không phụ thuộc markup nội bộ của plugin. */
+.cc-root .tp-form-wrap .wpforms-field-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0 1.25rem;
+}
+
+.cc-root .tp-form-wrap .wpforms-field-textarea,
+.cc-root .tp-form-wrap .wpforms-field-large {
+  grid-column: 1 / -1;
+}
+
+.cc-root .tp-form-wrap input[type="text"],
+.cc-root .tp-form-wrap input[type="email"],
+.cc-root .tp-form-wrap input[type="tel"],
+.cc-root .tp-form-wrap textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-family: inherit;
+  font-size: 0.97rem;
+  color: #374151;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0;
+}
+
+.cc-root .tp-form-wrap input:focus,
+.cc-root .tp-form-wrap textarea:focus {
+  border-color: #e17126;
+  outline: 2px solid rgb(225 113 38 / 25%);
+  outline-offset: 0;
+}
+
+.cc-root .tp-form-wrap label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #0f145b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.cc-root .tp-form-wrap button[type="submit"],
+.cc-root .tp-form-wrap input[type="submit"] {
+  padding: 0.8rem 2.2rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #e17126;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.cc-root .tp-form-wrap button[type="submit"]:hover,
+.cc-root .tp-form-wrap input[type="submit"]:hover {
+  background: #b3541c;
+}
+
+/* Chưa tạo form trong WPForms thì hiện hướng dẫn thay vì khoảng trống. */
+.cc-root .tp-form-placeholder {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  color: #4b5563;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #d1d5db;
+}
+
+.cc-root .tp-form-placeholder p {
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.cc-root .tp-form-placeholder p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Trang năng lực ===== */
+
+/* ----- Số liệu tổng quan ----- */
+.cc-root .tp-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-stat {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) 1rem;
+  text-align: center;
+  background: #f7f8fb;
+  border-top: 3px solid #e17126;
+}
+
+.cc-root .tp-stat__num {
+  color: #e17126;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cc-root .tp-stat__label {
+  margin-top: 0.35rem;
+  color: #0f145b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ----- Thẻ lĩnh vực / năng lực kỹ thuật ----- */
+.cc-root .tp-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-cap {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-cap img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.cc-root .tp-cap__body {
+  flex: 1 1 auto;
+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
+}
+
+.cc-root .tp-cap h3 {
+  margin: 0 0 0.4rem;
+  color: #0f145b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-cap__scale {
+  margin: 0 0 1rem;
+  color: #b3541c;
+  font-size: 0.87rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.cc-root .tp-cap ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.cc-root .tp-cap li {
+  margin-bottom: 0.35rem;
+  color: #4b5563;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+/* ----- Bảng máy móc thiết bị ----- */
+.cc-root .tp-equip {
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+}
+
+.cc-root .tp-equip__head {
+  padding: 0.85rem 1.1rem;
+  color: #fff;
+  background: #0f145b;
+}
+
+.cc-root .tp-equip__head h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-equip__head p {
+  margin: 0.15rem 0 0;
+  color: #c7cae4;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.cc-root .tp-equip table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.cc-root .tp-equip th,
+.cc-root .tp-equip td {
+  padding: 0.65rem 1.1rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.cc-root .tp-equip th {
+  color: #0f145b;
+  font-weight: 600;
+  background: #f7f8fb;
+}
+
+.cc-root .tp-equip td:last-child,
+.cc-root .tp-equip th:last-child {
+  width: 8rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.cc-root .tp-equip tbody tr:nth-child(even) {
+  background: #fcfcfd;
+}
+
+.cc-root .tp-equip__en {
+  display: block;
+  color: #6b7280;
+  font-size: 0.83rem;
+  font-style: italic;
+}
+
+/* ----- Quy trình thi công (các bước đánh số) ----- */
+.cc-root .tp-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-step {
+  position: relative;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: #f7f8fb;
+  border-left: 3px solid #e17126;
+}
+
+.cc-root .tp-step__num {
+  color: #e17126;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cc-root .tp-step h3 {
+  margin: 0.6rem 0 0.5rem;
+  color: #0f145b;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.cc-root .tp-step p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+/* ----- Nhân sự ----- */
+.cc-root .tp-team {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.8vw, 1.25rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-team__item {
+  padding: clamp(1rem, 2vw, 1.4rem);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-team__count {
+  color: #e17126;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cc-root .tp-team__role {
+  margin: 0.2rem 0 0.4rem;
+  color: #0f145b;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.cc-root .tp-team__item p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Lưới 3 cột của trang năng lực: gãy dần theo bề rộng.
+   Không dùng auto-fit vì nội dung dài sẽ tự kéo cột. */
+@media (max-width: 991px) {
+  .cc-root .tp-cap-grid,
+  .cc-root .tp-steps,
+  .cc-root .tp-team,
+  .cc-root .tp-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .cc-root .tp-cap-grid,
+  .cc-root .tp-steps,
+  .cc-root .tp-team,
+  .cc-root .tp-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

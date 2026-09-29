@@ -1,0 +1,35 @@
+.env
+wp-content/uploads/
+wp-content/themes/flatsome/
+wp-content/plugins/*/
+!wp-content/plugins/.gitkeep
+node_modules/
+*.log
+.DS_Store
+backups/
+
+# WordPress core (tải lại bằng: curl -L https://wordpress.org/wordpress-7.0.4.tar.gz)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+!/wp-config-sample.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+wp-config.php
+
+# Theme mặc định của WordPress — không dùng, tải lại được từ wordpress.org
+wp-content/themes/twenty*/
+
+# Thư mục do plugin tự sinh
+wp-content/updraft/
+wp-content/uploads-webpc/
+wp-content/upgrade/
+
+# Font đã loại khỏi bản build
+wp-content/themes/tinphat/assets/_fonts-unused/
+
+# Bản dịch plugin/theme do WordPress tự tải về (Dashboard > Cập nhật)
+# Bản dịch của theme tinphat nằm trong wp-content/themes/tinphat/languages/
+wp-content/languages/

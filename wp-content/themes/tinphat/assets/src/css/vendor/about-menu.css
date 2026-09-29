@@ -1,0 +1,31 @@
+/* Horizontal about submenu — flex track (replaces Swiper CSS dependency) */
+.cc-root .menu_about .menu_slider .swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cc-root .menu_about .menu_slider .swiper-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.cc-root .menu_about .menu_slider .item {
+  flex: 0 0 auto;
+}
+
+.cc-root .menu_about .menu-wrapper .swiper-button-prev:after {
+  content: "‹";
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cc-root .menu_about .menu-wrapper .swiper-button-next:after {
+  content: "›";
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+}

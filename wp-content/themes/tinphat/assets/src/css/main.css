@@ -1,0 +1,78 @@
+/* CSS của template (Bootstrap + style gốc) nạp không qua @layer:
+   layer có độ ưu tiên thấp hơn CSS thường, sẽ bị Tailwind ghi đè. */
+@import "./vendor/template.css";
+@import "./vendor/cc-aos.css";
+@import "./vendor/about-menu.css";
+
+/* Chỉ lấy utilities của Tailwind — preflight sẽ reset mất CSS template. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./components/_header.css";
+@import "./components/_banner.css";
+@import "./components/_projects.css";
+@import "./components/_page.css";
+@import "./components/_news.css";
+@import "./components/_home-sections.css";
+
+@layer theme, utilities;
+
+@theme {
+  --font-sans: "Bai Jamjuree", system-ui, -apple-system, sans-serif;
+  --color-brand-navy: #0f145b;
+  --color-brand-blue: #1569b7;
+  --color-brand-red: #b10000;
+  --color-brand-orange: #e17126;
+}
+
+/* ===== Khối số liệu ===== */
+.tp-key-numbers {
+  padding-block: 3rem;
+  text-align: center;
+}
+
+.tp-key-numbers__heading {
+  color: var(--color-brand-navy);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+}
+
+.tp-key-numbers__sub {
+  color: var(--color-brand-orange);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 0.5rem;
+}
+
+.tp-key-numbers__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .tp-key-numbers__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tp-key-number__label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.tp-key-number__value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-brand-orange);
+  margin-top: 0.25rem;
+}
+
+.tp-key-number__unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  /* Màu riêng đủ tương phản trên nền trắng (WCAG AA). */
+  color: #8a4212;
+}
+
