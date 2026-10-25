@@ -463,3 +463,17 @@
     overflow: hidden;
   }
 }
+
+/* Trang chủ mobile chỉ nên hiện 4 tin; 8 tin bắt người dùng vuốt quá
+   lâu, mà muốn xem thêm đã có nút "Xem tất cả" ngay dưới. */
+@media (max-width: 767px) {
+  /* Mỗi .post_item nằm trong một .col-md-12 riêng nên nth-of-type trên
+     chính nó luôn bằng 1; phải đếm ở cột cha. */
+  .cc-root .latest_news_section .col-md-12:nth-child(n + 5) {
+    display: none;
+  }
+
+  .cc-root .latest_news_section .post_item.mb-4 {
+    margin-bottom: 0.75rem !important;
+  }
+}

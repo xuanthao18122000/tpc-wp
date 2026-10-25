@@ -263,15 +263,13 @@
 
 /* Mobile 2 cột: ép các thẻ cùng hàng cao bằng nhau. */
 @media (max-width: 767px) {
+  /* Markup đã là .row > .col-md-3.col-6 của Bootstrap — tự nó đã 2 cột
+     ở mobile. Trước đây tôi ép display:grid lên .row, nhưng .col-6 bên
+     trong vẫn giữ flex-basis của Bootstrap nên lưới sinh ra 6 cột,
+     5 cột rộng 0px và thẻ tràn khỏi ô. Giữ nguyên flex, chỉ thu
+     khoảng đệm cho sát nhau hơn. */
   .cc-root .tp-home-fields .row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .cc-root .tp-home-fields .row > div {
-    width: 100%;
-    max-width: none;
-    padding-inline: 0.4rem;
+    --bs-gutter-x: 0.6rem;
   }
 
   .cc-root .tp-home-field__body h3 {
@@ -293,8 +291,7 @@
 @media (max-width: 767px) {
   /* --- 4 lĩnh vực hoạt động: 1670px -> còn khoảng một nửa --- */
   .cc-root .tp-home-fields .row {
-    /* Giữ lưới 2 cột như cũ nhưng thẻ thấp hơn nhiều */
-    gap: 0.6rem 0;
+    --bs-gutter-x: 0.6rem;
   }
 
   .cc-root .tp-home-field {

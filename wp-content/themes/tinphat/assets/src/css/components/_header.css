@@ -551,12 +551,24 @@
     margin: -7px 0 0 -7px;
   }
 
-  .cc-root #header_site .top_line .brochure-btn li:not(:first-child) {
-    top: 12px;
+  /* Animation "e-Brochure -> Loading... -> Open File" của template dịch
+     khối chữ bằng giá trị tuyệt đối tính cho nút cao 40px ở desktop.
+     Ở nút 24px mọi dòng đều lệch và lòi ra ngoài. Trên điện thoại bỏ
+     hẳn animation, chỉ giữ một dòng chữ tĩnh — gọn và không lỗi. */
+  .cc-root #header_site .top_line .brochure-btn.loading ul,
+  .cc-root #header_site .top_line .brochure-btn.loading > div::before,
+  .cc-root #header_site .top_line .brochure-btn.loading > div::after,
+  .cc-root #header_site .top_line .brochure-btn.loading > div svg {
+    animation: none;
   }
 
-  .cc-root #header_site .top_line .brochure-btn li:nth-child(2) { top: 32px; }
-  .cc-root #header_site .top_line .brochure-btn li:nth-child(3) { top: 62px; }
+  .cc-root #header_site .top_line .brochure-btn li:not(:first-child) {
+    display: none;
+  }
+
+  .cc-root #header_site .top_line .brochure-btn ul {
+    position: static;
+  }
 
   /* Bộ chuyển ngôn ngữ gọn hơn */
   .cc-root #header_site .top_line .menu_lang {
