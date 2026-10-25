@@ -121,6 +121,12 @@ $tp_socials = tinphat_socials();
 
 <div class="overlay_menu"></div>
 <div id="menu_mobile">
+	<button type="button" class="close_menu" aria-label="<?php esc_attr_e( 'Đóng menu', 'tinphat' ); ?>">
+		<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+			<path d="M6 6 L18 18 M18 6 L6 18" />
+		</svg>
+	</button>
+
 	<?php tinphat_language_switcher(); ?>
 	<?php
 	wp_nav_menu(

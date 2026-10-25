@@ -270,12 +270,18 @@
   background: rgb(0 0 0 / 45%);
   opacity: 0;
   visibility: hidden;
+  /* Template đẩy lớp phủ ra ngoài màn hình bằng translateX(100%) và
+     chỉ kéo về bằng class .is-active. Ta điều khiển bằng opacity nên
+     phải vô hiệu transform đó, nếu không lớp phủ nằm ở x=390 (ngoài
+     màn 390px) và bấm vào vùng tối chạm thẳng vào nội dung trang. */
+  transform: none;
   transition: opacity 0.25s ease, visibility 0.25s;
 }
 
 .cc-root .overlay_menu.open {
   opacity: 1;
   visibility: visible;
+  transform: none;
 }
 
 .cc-root #menu_mobile {
@@ -588,4 +594,90 @@
   .cc-root #header_site .logo_site img {
     max-width: 112px;
   }
+}
+
+/* ----- Menu con trong drawer mobile -----
+ *
+ * Template để chữ 13px, padding 2px nên vùng bấm chỉ cao 25px — dưới
+ * mức tối thiểu 44px cho cảm ứng, và các mục dính sát nhau rất dễ bấm
+ * nhầm. Nới ra cho ngón tay bấm trúng.
+ */
+@media (max-width: 991px) {
+  .cc-root #menu_mobile .menu_site li .sub-menu {
+    margin-top: 0.25rem;
+    padding-bottom: 0.4rem;
+    /* Vạch dọc nối các mục con với mục cha, nhìn rõ cấp bậc */
+    border-left: 2px solid #e5e7eb;
+    margin-left: 2px;
+    padding-left: 0.9rem;
+  }
+
+  .cc-root #menu_mobile .menu_site li .sub-menu li a {
+    display: block;
+    /* 11px trên dưới + line-height 22px = vùng bấm 44px */
+    padding: 0.7rem 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: #374151;
+  }
+
+  .cc-root #menu_mobile .menu_site li .sub-menu li:not(:last-child) a {
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .cc-root #menu_mobile .menu_site li .sub-menu li a:hover,
+  .cc-root #menu_mobile .menu_site li .sub-menu li.current-menu-item a {
+    color: #e17126;
+  }
+
+  /* Mục cha cũng cần vùng bấm đủ lớn */
+  .cc-root #menu_mobile .menu_site > li > a {
+    padding-block: 0.75rem;
+  }
+}
+
+/* ----- Nút đóng drawer ----- */
+.cc-root #menu_mobile {
+  /* Chừa chỗ cho nút X ở góc trên phải */
+  padding-top: 3.25rem;
+}
+
+.cc-root #menu_mobile .close_menu {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 40px: đủ lớn cho ngón tay bấm trúng */
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #0f145b;
+  cursor: pointer;
+  background: #f3f4f6;
+  border: 0;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cc-root #menu_mobile .close_menu:hover,
+.cc-root #menu_mobile .close_menu:focus-visible {
+  color: #fff;
+  background: #e17126;
+}
+
+.cc-root #menu_mobile .close_menu svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Bộ chuyển ngôn ngữ nằm cùng hàng với nút X — chừa chỗ bên phải */
+.cc-root #menu_mobile .menu_lang {
+  padding-right: 3rem;
 }

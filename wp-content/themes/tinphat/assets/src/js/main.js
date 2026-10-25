@@ -317,12 +317,31 @@ function initMobileMenu() {
   const overlay = document.querySelector('.overlay_menu');
   if (!burger || !drawer) return;
 
+  const closeBtn = drawer.querySelector('.close_menu');
+
   const setOpen = (open) => {
     drawer.classList.toggle('open', open);
+
     overlay?.classList.toggle('open', open);
+
     burger.querySelector('.hamburger-icon')?.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', String(open));
+
+    // Khoá cuộn nền khi menu mở, nếu không ngón tay vuốt trên menu
+    // lại kéo trang phía dưới.
+    document.body.style.overflow = open ? 'hidden' : '';
+
+    if (open) {
+      closeBtn?.focus();
+    } else {
+      burger.focus();
+    }
   };
+
+  closeBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    setOpen(false);
+  });
 
   burger.addEventListener('click', (e) => {
     e.preventDefault();
