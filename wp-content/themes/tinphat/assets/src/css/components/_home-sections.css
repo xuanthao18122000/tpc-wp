@@ -282,3 +282,87 @@
     font-size: 0.84rem;
   }
 }
+
+/* ===================================================================
+   Rút gọn trang chủ trên điện thoại
+   -------------------------------------------------------------------
+   Trang chủ dài 6475px (7.7 màn hình) trên máy 390x844. Phần lớn đến
+   từ ảnh tỉ lệ 16:10 — trên màn hẹp chúng cao gần bằng nửa màn hình.
+   Giảm tỉ lệ ảnh và khoảng cách để người dùng không phải vuốt quá lâu.
+   =================================================================== */
+@media (max-width: 767px) {
+  /* --- 4 lĩnh vực hoạt động: 1670px -> còn khoảng một nửa --- */
+  .cc-root .tp-home-fields .row {
+    /* Giữ lưới 2 cột như cũ nhưng thẻ thấp hơn nhiều */
+    gap: 0.6rem 0;
+  }
+
+  .cc-root .tp-home-field {
+    margin-bottom: 0.6rem;
+  }
+
+  .cc-root .tp-home-field__media img {
+    /* 16:10 quá cao trên màn hẹp */
+    aspect-ratio: 3 / 2;
+  }
+
+  .cc-root .tp-home-field__body {
+    padding: 0.7rem 0.8rem 0.9rem;
+  }
+
+  .cc-root .tp-home-field__body h3 {
+    margin-bottom: 0.3rem;
+    font-size: 0.86rem;
+  }
+
+  .cc-root .tp-home-field__body p {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    /* Giới hạn 3 dòng cho các thẻ cao bằng nhau */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* --- Giới thiệu ngắn: 730px --- */
+  .cc-root .tp-home-about {
+    padding-block: 2rem !important;
+  }
+
+  .cc-root .tp-home-about__media img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .cc-root .tp-home-about__body {
+    padding-top: 1rem;
+  }
+
+  .cc-root .tp-home-about__body p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  /* --- Khoảng cách giữa các khối --- */
+  .cc-root .project_section {
+    padding-top: 1.5rem !important;
+  }
+
+  .cc-root .latest_news_section {
+    padding-top: 1.5rem !important;
+  }
+
+  .cc-root .partner_section {
+    margin-top: 1.5rem !important;
+    padding-block: 1.5rem !important;
+  }
+
+  .cc-root .career_section {
+    padding-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .cc-root .tp-motto-band {
+    min-height: 160px;
+  }
+}

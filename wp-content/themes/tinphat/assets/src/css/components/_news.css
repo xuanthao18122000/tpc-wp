@@ -430,3 +430,36 @@
     margin-top: clamp(2rem, 5vw, 3rem);
   }
 }
+
+/* Khối tin mới nhất trên điện thoại: thu gọn ảnh và chữ để khối
+   không chiếm hơn một màn hình rưỡi. */
+@media (max-width: 767px) {
+  .cc-root .latest_news_section .post_item figure img,
+  .cc-root .latest_news_section .item_post figure img,
+  .cc-root .latest_news_section .post_item figure .tp-thumb-placeholder,
+  .cc-root .latest_news_section .item_post figure .tp-thumb-placeholder {
+    aspect-ratio: 3 / 2;
+  }
+
+  .cc-root .latest_news_section .post_item,
+  .cc-root .latest_news_section .item_post {
+    margin-bottom: 1rem;
+  }
+
+  .cc-root .latest_news_section .post_item h3,
+  .cc-root .latest_news_section .item_post h3 {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .cc-root .latest_news_section .post_item .excerpt p,
+  .cc-root .latest_news_section .item_post .excerpt p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    /* 2 dòng là đủ để biết bài nói gì */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

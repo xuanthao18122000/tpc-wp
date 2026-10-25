@@ -488,3 +488,92 @@
     opacity: 0.55;
   }
 }
+
+/* ===================================================================
+   Tối ưu header cho điện thoại
+   =================================================================== */
+@media (max-width: 767px) {
+  /* --- Thanh trên: gọn lại, không vỡ dòng ---
+   *
+   * Template chia col-4 / col-8; trên màn 390px cột trái chỉ còn ~120px
+   * nên số điện thoại vỡ thành 3 dòng và bị nút e-Brochure đè lên.
+   * Bỏ chia cột, xếp theo flex và cho số điện thoại không xuống dòng.
+   */
+  .cc-root #header_site .top_line .row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cc-root #header_site .top_line .row > [class*="col-"] {
+    flex: 0 1 auto;
+    width: auto;
+    max-width: none;
+  }
+
+  .cc-root #header_site .top_line .row > [class*="col-"]:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .cc-root #header_site .top_line .social {
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+  }
+
+  .cc-root #header_site .top_line .social a.fw-bold {
+    white-space: nowrap;
+    font-size: 0.82rem;
+  }
+
+  /* Icon mạng xã hội chiếm chỗ mà ít người bấm trên điện thoại;
+     số điện thoại mới là thứ cần thấy. */
+  .cc-root #header_site .top_line .social li:not(:last-child) {
+    display: none;
+  }
+
+  /* Nút e-Brochure thu nhỏ, chỉ còn chữ + mũi tên */
+  .cc-root #header_site .top_line .brochure-btn ul {
+    padding: 2px 10px;
+    font-size: 11px;
+    line-height: 20px;
+  }
+
+  .cc-root #header_site .top_line .brochure-btn > div {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cc-root #header_site .top_line .brochure-btn > div svg {
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+  }
+
+  .cc-root #header_site .top_line .brochure-btn li:not(:first-child) {
+    top: 12px;
+  }
+
+  .cc-root #header_site .top_line .brochure-btn li:nth-child(2) { top: 32px; }
+  .cc-root #header_site .top_line .brochure-btn li:nth-child(3) { top: 62px; }
+
+  /* Bộ chuyển ngôn ngữ gọn hơn */
+  .cc-root #header_site .top_line .menu_lang {
+    padding-left: 18px;
+    font-size: 0.78rem;
+  }
+
+  .cc-root #header_site .top_line .menu_lang li a {
+    padding-right: 10px;
+  }
+
+  /* --- Hàng logo + hamburger --- */
+  .cc-root #header_site .head_menu {
+    padding-block: 0.5rem !important;
+  }
+
+  .cc-root #header_site .logo_site img {
+    max-width: 112px;
+  }
+}

@@ -98,6 +98,21 @@ function initProjectSliders() {
 
   sliders.forEach((el) => {
     new Swiper(el, {
+      // --- Cảm ứng trên điện thoại ---
+      // Mặc định Swiper nuốt mọi cử chỉ bắt đầu trong vùng slider và chỉ
+      // nhả khi góc vuốt lệch quá 45° so với phương ngang. Ba slider của
+      // trang chủ chiếm gần hết chiều cao màn hình nên người dùng vuốt
+      // dọc hơi xiên là trang đứng im.
+      //
+      // touchStartPreventDefault: false  -> trình duyệt vẫn cuộn được
+      // touchAngle: 30                   -> chỉ nhận là vuốt ngang khi
+      //                                     thật sự ngang
+      // touchReleaseOnEdges: true        -> tới slide đầu/cuối thì nhả
+      touchStartPreventDefault: false,
+      touchAngle: 30,
+      touchReleaseOnEdges: true,
+      resistanceRatio: 0.65,
+
       modules: [Navigation, Pagination, Autoplay],
       // Trang mẫu: slide rộng 376px, bước nhảy 400px. Khoảng cách đã
       // do .slider_projects .item { margin: 0 12px } trong template lo,
@@ -164,6 +179,21 @@ function initBannerSlider() {
   if (!el) return;
 
   new Swiper(el, {
+      // --- Cảm ứng trên điện thoại ---
+      // Mặc định Swiper nuốt mọi cử chỉ bắt đầu trong vùng slider và chỉ
+      // nhả khi góc vuốt lệch quá 45° so với phương ngang. Ba slider của
+      // trang chủ chiếm gần hết chiều cao màn hình nên người dùng vuốt
+      // dọc hơi xiên là trang đứng im.
+      //
+      // touchStartPreventDefault: false  -> trình duyệt vẫn cuộn được
+      // touchAngle: 30                   -> chỉ nhận là vuốt ngang khi
+      //                                     thật sự ngang
+      // touchReleaseOnEdges: true        -> tới slide đầu/cuối thì nhả
+      touchStartPreventDefault: false,
+      touchAngle: 30,
+      touchReleaseOnEdges: true,
+      resistanceRatio: 0.65,
+
     modules: [Navigation, Autoplay, Pagination],
     slidesPerView: 1,
     loop: el.querySelectorAll('.swiper-slide').length > 1,
@@ -246,6 +276,21 @@ function initPartnerSlider() {
   if (!el) return;
 
   new Swiper(el, {
+      // --- Cảm ứng trên điện thoại ---
+      // Mặc định Swiper nuốt mọi cử chỉ bắt đầu trong vùng slider và chỉ
+      // nhả khi góc vuốt lệch quá 45° so với phương ngang. Ba slider của
+      // trang chủ chiếm gần hết chiều cao màn hình nên người dùng vuốt
+      // dọc hơi xiên là trang đứng im.
+      //
+      // touchStartPreventDefault: false  -> trình duyệt vẫn cuộn được
+      // touchAngle: 30                   -> chỉ nhận là vuốt ngang khi
+      //                                     thật sự ngang
+      // touchReleaseOnEdges: true        -> tới slide đầu/cuối thì nhả
+      touchStartPreventDefault: false,
+      touchAngle: 30,
+      touchReleaseOnEdges: true,
+      resistanceRatio: 0.65,
+
     modules: [Autoplay],
     slidesPerView: 2,
     spaceBetween: 24,
