@@ -38,3 +38,31 @@
     transition: none;
   }
 }
+
+/* Trên điện thoại hiệu ứng 0.8s cộng delay tới 0.3s là quá chậm: vuốt
+   nhanh thì vùng vừa lộ ra vẫn đang mờ, người dùng tưởng trang đứng.
+   Rút ngắn và giảm quãng dịch cho hiệu ứng bám kịp ngón tay. */
+@media (max-width: 767px) {
+  .cc-root [data-aos] {
+    transition-duration: 0.35s;
+  }
+
+  .cc-root [data-aos="fade-up"] {
+    transform: translate3d(0, 24px, 0);
+  }
+
+  .cc-root [data-aos="fade-right"] {
+    transform: translate3d(-24px, 0, 0);
+  }
+
+  .cc-root [data-aos="fade-left"] {
+    transform: translate3d(24px, 0, 0);
+  }
+
+  /* Bỏ độ trễ so le — trên màn hẹp các khối vào khung gần như cùng lúc */
+  .cc-root [data-aos-delay="100"].aos-animate,
+  .cc-root [data-aos-delay="200"].aos-animate,
+  .cc-root [data-aos-delay="300"].aos-animate {
+    transition-delay: 0s;
+  }
+}

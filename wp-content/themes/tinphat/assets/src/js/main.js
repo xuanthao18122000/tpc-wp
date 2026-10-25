@@ -380,6 +380,13 @@ function initScrollReveal() {
     return;
   }
 
+  // threshold 0.15 nghĩa là khối phải lộ ra 15% mới bắt đầu hiện. Với
+  // khối cao 500px trên màn 844px thì phải vuốt hơn 100px — người dùng
+  // thấy trang "không nhúc nhích" vì vùng mới lộ ra đang opacity:0,
+  // rồi một lúc nội dung mới hiện ra. Trên điện thoại dùng rootMargin
+  // dương để kích hoạt TRƯỚC khi khối lọt vào khung nhìn.
+  const mobile = window.matchMedia('(max-width: 767px)').matches;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -388,8 +395,22 @@ function initScrollReveal() {
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    mobile
+      ? { threshold: 0, rootMargin: '0px 0px 15% 0px' }
+      : { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
   );
 
   items.forEach((el) => observer.observe(el));
+
+  // Lưới an toàn: nếu observer không chạy (tab nền, trình duyệt cũ,
+  // hoặc khối đã nằm sẵn trong khung nhìn lúc tải), vẫn hiện sau 1.2s
+  // thay vì để trang trống.
+  window.setTimeout(() => {
+    items.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        el.classList.add('aos-animate');
+      }
+    });
+  }, 1200);
 }
