@@ -117,7 +117,11 @@ function initProjectSliders() {
       // Trang mẫu: slide rộng 376px, bước nhảy 400px. Khoảng cách đã
       // do .slider_projects .item { margin: 0 12px } trong template lo,
       // nên KHÔNG đặt spaceBetween nữa — đặt thêm sẽ cộng dồn.
-      slidesPerView: 1,
+      // 'auto' để CSS quyết định bề ngang slide. Ở điện thoại slide
+      // rộng 82% nên thấy hé slide kế bên — người dùng nhận ra ngay là
+      // vuốt ngang được. Đặt slidesPerView: 1 thì Swiper ép slide bằng
+      // đúng container, cộng với centeredSlides thành lệch khỏi mép.
+      slidesPerView: 'auto',
       spaceBetween: 0,
       loop: true,
       centeredSlides: true,
