@@ -103,3 +103,31 @@ function tinphat_month_label( $post = null ): string {
 
 	return (string) get_the_date( 'M', $post );
 }
+
+/**
+ * URL trang liên hệ theo ngôn ngữ hiện tại.
+ *
+ * Trả về trang chủ nếu chưa có trang liên hệ, để link không bị rỗng.
+ *
+ * @return string
+ */
+function tinphat_contact_url(): string {
+	$slug = 'vi' === tinphat_current_lang() ? 'lien-he' : 'contact';
+	$lang = tinphat_current_lang();
+
+	foreach ( get_posts(
+		array(
+			'post_type'      => 'page',
+			'name'           => $slug,
+			'posts_per_page' => -1,
+			'post_status'    => 'publish',
+			'fields'         => 'ids',
+		)
+	) as $id ) {
+		if ( ! function_exists( 'pll_get_post_language' ) || pll_get_post_language( $id ) === $lang ) {
+			return (string) get_permalink( $id );
+		}
+	}
+
+	return tinphat_home_url();
+}

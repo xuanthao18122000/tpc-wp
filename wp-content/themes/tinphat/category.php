@@ -13,7 +13,7 @@ $tp_term = get_queried_object();
 ?>
 <div class="page_cover">
 	<div class="bg_cover">
-		<img class="img-fluid" src="<?php echo esc_url( tinphat_uploads_url( 'banner-02.webp' ) ); ?>" alt="" draggable="false">
+		<img class="img-fluid" src="<?php echo esc_url( tinphat_uploads_url( 'banner-01.webp' ) ); ?>" alt="" draggable="false">
 	</div>
 
 	<div class="meta_info">
@@ -29,20 +29,18 @@ $tp_term = get_queried_object();
 	</div>
 </div>
 
-<div class="news__page py-5">
+<div class="news__page page_project py-5">
 	<div class="container">
 		<?php get_template_part( 'template-parts/news/filter' ); ?>
 
 		<?php if ( have_posts() ) : ?>
-			<div class="other_post">
-				<div class="row">
+			<div class="row justify-content-center">
 					<?php
 					while ( have_posts() ) :
 						the_post();
 						get_template_part( 'template-parts/news/card' );
 					endwhile;
 					?>
-				</div>
 			</div>
 
 			<?php the_posts_pagination( array( 'mid_size' => 2, 'prev_text' => '&laquo;', 'next_text' => '&raquo;' ) ); ?>

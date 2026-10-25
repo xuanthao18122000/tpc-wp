@@ -37,6 +37,26 @@ function tp_page_id( string $slug, string $lang ): int {
 }
 
 /**
+ * URL archive của một CPT theo ngôn ngữ.
+ *
+ * Polylang chỉ đổi tiền tố /vi /en, slug archive giữ nguyên, nên ghép
+ * lại từ pll_home_url cho chắc thay vì cắt chuỗi.
+ */
+function tp_archive_url( string $post_type, string $lang ): string {
+	$archive = (string) get_post_type_archive_link( $post_type );
+
+	if ( '' === $archive ) {
+		return '';
+	}
+
+	$path = (string) wp_parse_url( $archive, PHP_URL_PATH );
+	$slug = trim( (string) preg_replace( '#^/[a-z]{2}/#', '/', $path ), '/' );
+	$home = function_exists( 'pll_home_url' ) ? (string) pll_home_url( $lang ) : home_url( '/' );
+
+	return trailingslashit( $home ) . trailingslashit( $slug );
+}
+
+/**
  * Cấu trúc menu: slug trang + các mục con.
  */
 $structure = array(
@@ -51,6 +71,7 @@ $structure = array(
 				'slug'     => 'nang-luc',
 				'children' => array( 'linh-vuc-hoat-dong', 'may-moc-thiet-bi', 'quy-trinh-thi-cong', 'chung-chi-giay-phep' ),
 			),
+			array( 'type' => 'archive', 'post_type' => 'du-an', 'title' => 'Dự án' ),
 			array( 'slug' => 'tin-tuc', 'children' => array() ),
 			array( 'slug' => 'lien-he', 'children' => array() ),
 		),
@@ -68,6 +89,7 @@ $structure = array(
 				'slug'     => 'capabilities',
 				'children' => array( 'what-we-do', 'plant-equipment', 'construction-process', 'certificates-licences' ),
 			),
+			array( 'type' => 'archive', 'post_type' => 'du-an', 'title' => 'Projects' ),
 			array( 'slug' => 'news', 'children' => array() ),
 			array( 'slug' => 'contact', 'children' => array() ),
 		),
@@ -90,6 +112,21 @@ foreach ( $structure as $lang => $config ) {
 	}
 
 	foreach ( $config['primary'] as $entry ) {
+		// Mục trỏ tới archive của CPT (vd. Dự án) — không phải trang.
+		if ( 'archive' === ( $entry['type'] ?? '' ) ) {
+			wp_update_nav_menu_item(
+				$menu_id,
+				0,
+				array(
+					'menu-item-title'     => $entry['title'],
+					'menu-item-url'       => tp_archive_url( $entry['post_type'], $lang ),
+					'menu-item-type'      => 'custom',
+					'menu-item-status'    => 'publish',
+				)
+			);
+			continue;
+		}
+
 		$page_id = tp_page_id( $entry['slug'], $lang );
 
 		if ( 0 === $page_id ) {

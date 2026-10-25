@@ -154,251 +154,391 @@ function tpk_list( array $items ): string {
 
 $pages = array(
 
-	// ===== Lĩnh vực hoạt động =====
+	// ===== Lĩnh vực hoạt động (trang Năng lực thi công theo hồ sơ PDF) =====
 	'linh-vuc-hoat-dong' => array(
 		'content' =>
-			'<h2 class="tp-lead">Năng lực thi công đa dạng</h2>'
-			. '<p class="tp-lead-desc">Dân dụng, công nghiệp và thương mại — từ nhà ở riêng lẻ đến nhà máy quy mô lớn</p>'
+			'<h2 class="tp-lead">Năng lực thi công</h2>'
+			. '<p class="tp-lead-desc">Hồ sơ năng lực CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT</p>'
+			. tpk_download(
+				'Tải hồ sơ năng lực đầy đủ',
+				'Bản PDF 21 trang song ngữ Việt – Anh, gồm thông tin pháp nhân, sơ đồ tổ chức, danh mục thiết bị và toàn bộ dự án tiêu biểu (62 MB).',
+				'Tải hồ sơ PDF'
+			)
 			. tpk_stats(
 				array(
-					array( 'num' => '100+', 'label' => 'Dự án hoàn thành' ),
-					array( 'num' => '150+', 'label' => 'Đội ngũ nhân sự' ),
-					array( 'num' => '10+', 'label' => 'Năm kinh nghiệm' ),
-					array( 'num' => '100%', 'label' => 'Cam kết chất lượng' ),
+					array( 'num' => '50+', 'label' => 'Kỹ sư và nhân viên' ),
+					array( 'num' => '70+', 'label' => 'Dự án' ),
+					array( 'num' => '250+', 'label' => 'Lao động thường xuyên' ),
+					array( 'num' => '30', 'label' => 'Loại thiết bị' ),
 				)
 			)
+			. tpk_title( 'Lĩnh vực hoạt động' )
+			. tpk_rows(
+				array(
+					array(
+						'image' => 'tp-cap-fields.webp',
+						'title' => '01 · Thi công xây dựng dân dụng và công nghiệp – Hạ tầng kỹ thuật',
+						'en'    => 'Construction of civil and industrial buildings – technical infrastructure',
+						'items' => array( 'Nhà xưởng, kho hàng kín', 'Công trình dân dụng', 'Hạ tầng kỹ thuật khu công nghiệp', 'Sân bê tông, bãi đá' ),
+					),
+					array(
+						'image' => 'tp-prj-duong-991.webp',
+						'title' => '02 · Thi công xây dựng công trình giao thông đường bộ và đường thuỷ, hàng hải',
+						'en'    => 'Construction transportation infrastructure road and waterway infrastructure, maritime',
+						'items' => array( 'Đường giao thông các cấp', 'Cầu trên tuyến', 'Hệ thống thoát nước', 'Phao báo hiệu đường thuỷ nội địa' ),
+					),
+					array(
+						'image' => 'tp-cap-vision.webp',
+						'title' => '03 · Tư vấn thiết kế và quản lý dự án xây dựng',
+						'en'    => 'Construction project design and management consulting',
+						'items' => array( 'Tư vấn thiết kế công trình', 'Quản lý dự án', 'Lập hồ sơ dự thầu', 'Giám sát thi công' ),
+					),
+					array(
+						'image' => 'tp-prj-duong-a3.webp',
+						'title' => '04 · Khảo sát, đo đạc & lập mô hình BIM',
+						'en'    => 'Surveying, Measurement & BIM Modeling',
+						'items' => array( 'Khảo sát địa hình', 'Đo đạc trắc địa', 'Lập mô hình BIM', 'Kiểm tra khối lượng' ),
+					),
+				)
+			)
+			. tpk_title( 'Tầm nhìn – Sứ mệnh' )
 			. tpk_paras(
 				array(
-					'Với hơn 10 năm kinh nghiệm, đội ngũ chuyên nghiệp và trang thiết bị hiện đại, Tín Phát nhận thi công đa dạng loại hình công trình với quy mô khác nhau trên địa bàn Thành phố Hồ Chí Minh và các tỉnh lân cận.',
+					'TẦM NHÌN — Tín Phát hướng đến trở thành một trong những doanh nghiệp xây dựng – đầu tư – thương mại uy tín tại Việt Nam, không ngừng đổi mới để mang lại các giải pháp thi công chất lượng, an toàn và bền vững cho các công trình trên toàn quốc.',
 				)
 			)
-			. tpk_title( 'Lĩnh vực thi công' )
-			. tpk_caps(
+			. tpk_list(
+				array(
+					'SỨ MỆNH — Mang đến cho khách hàng các dịch vụ thi công xây dựng chuyên nghiệp, đúng tiến độ và đạt chuẩn chất lượng cao.',
+					'Góp phần tạo nên những công trình vững bền, thân thiện môi trường và giá trị lâu dài.',
+					'Xây dựng đội ngũ nhân sự có chuyên môn, trách nhiệm và tinh thần phục vụ tận tâm.',
+				)
+			)
+			. tpk_title( 'Sơ đồ tổ chức' )
+			. tpk_org(
 				array(
 					array(
-						'title' => 'Xây dựng dân dụng',
-						'scale' => 'Quy mô: từ 100m² đến 10.000m²',
-						'image' => 'project-01-Emerald-Boulevard-Le-Phong.webp',
-						'items' => array( 'Nhà ở riêng lẻ (1-5 tầng)', 'Biệt thự cao cấp', 'Nhà phố thương mại', 'Chung cư mini', 'Khu đô thị', 'Cải tạo, nâng cấp nhà cũ' ),
+						'class' => 'tp-org__level--top',
+						'nodes' => array( array( 'Giám đốc', 'General Director' ) ),
 					),
 					array(
-						'title' => 'Xây dựng công nghiệp',
-						'scale' => 'Quy mô: từ 500m² đến 50.000m²',
-						'image' => 'project-16-Cot-dien-gio-tai-nha-may-Phu-Lac.webp',
-						'items' => array( 'Nhà xưởng sản xuất', 'Nhà kho, logistics', 'Nhà máy công nghiệp', 'Trạm xử lý môi trường', 'Hạ tầng kỹ thuật', 'Khu công nghiệp' ),
+						'class' => 'tp-org__level--mid',
+						'nodes' => array( array( 'Phó Giám đốc', 'Deputy Director' ) ),
 					),
 					array(
-						'title' => 'Xây dựng thương mại',
-						'scale' => 'Quy mô: từ 200m² đến 20.000m²',
-						'image' => 'project-09-UOA.webp',
-						'items' => array( 'Văn phòng làm việc', 'Trung tâm thương mại', 'Showroom, cửa hàng', 'Khách sạn, resort', 'Nhà hàng, cafe', 'Trung tâm hội nghị' ),
+						'class' => 'tp-org__level--dept',
+						'nodes' => array(
+							array( 'P. Tài chính Kế toán', 'Finance & Accounting Department' ),
+							array( 'P. Hành chính – Nhân sự', 'Administration & Human Resources Department' ),
+							array( 'P. Dự án – Kế hoạch – Đấu thầu', 'Project – Planning & Bidding Department' ),
+							array( 'P. Vật tư – Thiết bị', 'Materials & Equipment Department' ),
+						),
+					),
+					array(
+						'class' => 'tp-org__level--site',
+						'nodes' => array( array( 'Các Ban chỉ huy công trường thi công', 'Construction Site Management Teams' ) ),
 					),
 				)
 			)
-			. tpk_title( 'Năng lực kỹ thuật' )
-			. tpk_caps(
+			. tpk_title( 'Năng lực nhân sự' )
+			. tpk_rows(
 				array(
 					array(
-						'title' => 'Thiết kế & tư vấn',
-						'scale' => 'Đội ngũ kiến trúc sư và kỹ sư giàu kinh nghiệm',
-						'items' => array( 'Thiết kế kiến trúc', 'Thiết kế kết cấu', 'Thiết kế hệ thống M&E', 'Tư vấn giải pháp tối ưu', 'Dự toán chi phí chi tiết' ),
-					),
-					array(
-						'title' => 'Thi công & quản lý',
-						'scale' => 'Quy trình chuyên nghiệp, quản lý chặt chẽ',
-						'items' => array( 'Quản lý dự án chuyên nghiệp', 'Giám sát chất lượng 24/7', 'Kiểm soát tiến độ nghiêm ngặt', 'Báo cáo định kỳ cho chủ đầu tư', 'Xử lý vấn đề phát sinh nhanh chóng' ),
-					),
-					array(
-						'title' => 'Chất lượng & an toàn',
-						'scale' => 'Cam kết chất lượng và an toàn tuyệt đối',
-						'items' => array( 'Kiểm tra chất lượng từng công đoạn', 'Vật liệu đạt chuẩn chất lượng', 'Tuân thủ quy chuẩn xây dựng', 'An toàn lao động tuyệt đối', 'Bảo hành công trình dài hạn' ),
+						'image' => 'tp-cap-hr.webp',
+						'title' => 'Đầu tư phát triển nguồn nhân lực',
+						'en'    => 'Investing in human resources – investing in people is the foundation of sustainable development.',
+						'items' => array( '50+ kỹ sư và nhân viên', '70+ dự án đã và đang triển khai', '250+ lao động thường xuyên' ),
 					),
 				)
-			),
+			)
+			. tpk_edu(
+				array(
+					array( 'Trình độ đại học trở lên', 'Bachelor’s degree or higher', 70 ),
+					array( 'Trình độ cao đẳng', 'College’s degree', 20 ),
+					array( 'Trình độ trung cấp', 'Vocational degree', 10 ),
+				)
+			)
+			. do_shortcode( '[tinphat_motto title="Đơn vị tổng thầu thi công xây dựng hàng đầu Việt Nam" sub="Vietnam’s leading general construction contractor"]' ),
 		'en'      => array(
 			'slug'    => 'what-we-do',
 			'content' =>
-				'<h2 class="tp-lead">A broad construction capability</h2>'
-				. '<p class="tp-lead-desc">Residential, industrial and commercial — from single houses to large-scale plants</p>'
+				'<h2 class="tp-lead">Construction capability</h2>'
+				. '<p class="tp-lead-desc">Company profile — TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED</p>'
+				. tpk_download(
+					'Download the full company profile',
+					'A 21-page bilingual PDF covering legal details, the organization chart, the equipment list and every featured project (62 MB).',
+					'Download PDF'
+				)
 				. tpk_stats(
 					array(
-						array( 'num' => '100+', 'label' => 'Completed projects' ),
-						array( 'num' => '150+', 'label' => 'Team members' ),
-						array( 'num' => '10+', 'label' => 'Years of experience' ),
-						array( 'num' => '100%', 'label' => 'Quality commitment' ),
+						array( 'num' => '50+', 'label' => 'Engineers and staff' ),
+						array( 'num' => '70+', 'label' => 'Projects' ),
+						array( 'num' => '250+', 'label' => 'Permanent employees' ),
+						array( 'num' => '30', 'label' => 'Equipment types' ),
 					)
 				)
+				. tpk_title( 'Field of operation' )
+				. tpk_rows(
+					array(
+						array(
+							'image' => 'tp-cap-fields.webp',
+							'title' => '01 · Construction of civil and industrial buildings – technical infrastructure',
+							'en'    => '',
+							'items' => array( 'Factories and closed warehouses', 'Civil works', 'Industrial park infrastructure', 'Concrete yards and rock areas' ),
+						),
+						array(
+							'image' => 'tp-prj-duong-991.webp',
+							'title' => '02 · Construction of road and waterway transport infrastructure, maritime',
+							'en'    => '',
+							'items' => array( 'Roads of all grades', 'Bridges on route', 'Drainage systems', 'Inland waterway buoy systems' ),
+						),
+						array(
+							'image' => 'tp-cap-vision.webp',
+							'title' => '03 · Construction project design and management consulting',
+							'en'    => '',
+							'items' => array( 'Design consultancy', 'Project management', 'Tender documentation', 'Construction supervision' ),
+						),
+						array(
+							'image' => 'tp-prj-duong-a3.webp',
+							'title' => '04 · Surveying, measurement & BIM modeling',
+							'en'    => '',
+							'items' => array( 'Topographic surveying', 'Geodetic measurement', 'BIM modeling', 'Quantity verification' ),
+						),
+					)
+				)
+				. tpk_title( 'Vision – Mission' )
 				. tpk_paras(
 					array(
-						'With over 10 years of experience, a professional team and modern equipment, Tin Phat builds a wide range of project types and scales across Ho Chi Minh City and neighbouring provinces.',
+						'VISION — Tin Phat aims to become a reputable construction – investment – trading enterprise in Vietnam, continuously innovating to deliver high-quality, safe and sustainable construction solutions for projects nationwide.',
 					)
 				)
-				. tpk_title( 'What we build' )
-				. tpk_caps(
+				. tpk_list(
+					array(
+						'MISSION — Provide clients with professional construction services that meet schedule and deliver high-quality standards.',
+						'Contribute to creating durable, environmentally friendly and long-lasting projects.',
+						'Build a workforce with expertise, responsibility and dedication to service excellence.',
+					)
+				)
+				. tpk_title( 'Organization chart' )
+				. tpk_org(
 					array(
 						array(
-							'title' => 'Residential construction',
-							'scale' => 'Scale: 100m² to 10,000m²',
-							'image' => 'project-01-Emerald-Boulevard-Le-Phong.webp',
-							'items' => array( 'Individual houses (1-5 storeys)', 'Premium villas', 'Commercial townhouses', 'Small apartment buildings', 'Urban areas', 'Renovation and upgrades' ),
+							'class' => 'tp-org__level--top',
+							'nodes' => array( array( 'General Director', 'Giám đốc' ) ),
 						),
 						array(
-							'title' => 'Industrial construction',
-							'scale' => 'Scale: 500m² to 50,000m²',
-							'image' => 'project-16-Cot-dien-gio-tai-nha-may-Phu-Lac.webp',
-							'items' => array( 'Manufacturing workshops', 'Warehousing and logistics', 'Industrial plants', 'Environmental treatment stations', 'Technical infrastructure', 'Industrial parks' ),
+							'class' => 'tp-org__level--mid',
+							'nodes' => array( array( 'Deputy Director', 'Phó Giám đốc' ) ),
 						),
 						array(
-							'title' => 'Commercial construction',
-							'scale' => 'Scale: 200m² to 20,000m²',
-							'image' => 'project-09-UOA.webp',
-							'items' => array( 'Offices', 'Shopping centres', 'Showrooms and shops', 'Hotels and resorts', 'Restaurants and cafés', 'Conference centres' ),
+							'class' => 'tp-org__level--dept',
+							'nodes' => array(
+								array( 'Finance & Accounting Department', 'P. Tài chính Kế toán' ),
+								array( 'Administration & Human Resources', 'P. Hành chính – Nhân sự' ),
+								array( 'Project – Planning & Bidding', 'P. Dự án – Kế hoạch – Đấu thầu' ),
+								array( 'Materials & Equipment Department', 'P. Vật tư – Thiết bị' ),
+							),
+						),
+						array(
+							'class' => 'tp-org__level--site',
+							'nodes' => array( array( 'Construction Site Management Teams', 'Các Ban chỉ huy công trường' ) ),
 						),
 					)
 				)
-				. tpk_title( 'Technical capability' )
-				. tpk_caps(
+				. tpk_title( 'Human resources' )
+				. tpk_rows(
 					array(
 						array(
-							'title' => 'Design & consultancy',
-							'scale' => 'Experienced architects and engineers',
-							'items' => array( 'Architectural design', 'Structural design', 'M&E systems design', 'Optimal solution advice', 'Detailed cost estimates' ),
-						),
-						array(
-							'title' => 'Construction & management',
-							'scale' => 'A professional, tightly managed process',
-							'items' => array( 'Professional project management', 'Quality supervision 24/7', 'Strict schedule control', 'Regular reporting to the investor', 'Fast resolution of issues' ),
-						),
-						array(
-							'title' => 'Quality & safety',
-							'scale' => 'An absolute commitment to quality and safety',
-							'items' => array( 'Quality checks at every stage', 'Certified materials', 'Compliance with building codes', 'Absolute occupational safety', 'Long-term warranty' ),
+							'image' => 'tp-cap-hr.webp',
+							'title' => 'Investing in human resources',
+							'en'    => 'Investing in people is the foundation of sustainable development.',
+							'items' => array( '50+ engineers and staff', '70+ projects completed and under way', '250+ permanent employees' ),
 						),
 					)
-				),
+				)
+				. tpk_edu(
+					array(
+						array( 'Bachelor’s degree or higher', '', 70 ),
+						array( 'College’s degree', '', 20 ),
+						array( 'Vocational degree', '', 10 ),
+					)
+				)
+				. do_shortcode( '[tinphat_motto title="Vietnam’s leading general construction contractor" sub="Đơn vị tổng thầu thi công xây dựng hàng đầu Việt Nam"]' ),
 		),
 	),
 
 	// ===== Máy móc & Thiết bị =====
 	'may-moc-thiet-bi' => array(
 		'content' =>
-			'<h2 class="tp-lead">Máy móc và thiết bị thi công</h2>'
-			. '<p class="tp-lead-desc">Thiết bị thuộc sở hữu của Tín Phát, sẵn sàng huy động cho công trình</p>'
+			'<h2 class="tp-lead">Năng lực thiết bị</h2>'
+			. '<p class="tp-lead-desc">30 loại máy móc, thiết bị thuộc sở hữu của Tín Phát, sẵn sàng huy động cho công trình</p>'
 			. tpk_paras(
 				array(
-					'Tín Phát chủ động về máy móc thi công nên không phụ thuộc vào đơn vị cho thuê — đây là yếu tố giúp chúng tôi giữ đúng tiến độ đã cam kết. Toàn bộ thiết bị được bảo dưỡng định kỳ và vận hành bởi đội ngũ có chứng chỉ.',
+					'Nhằm mang đến cho khách hàng những sản phẩm và dịch vụ chất lượng cao nhất, Công ty đã không ngừng đầu tư vào hệ thống máy móc, thiết bị mới, hiện đại và có công suất lớn từ các thương hiệu uy tín trên thế giới.',
+					'Hệ thống trang thiết bị này không chỉ nâng cao năng suất và hiệu quả thi công mà còn đảm bảo an toàn cho người vận hành, với quy trình sử dụng được kiểm soát nghiêm ngặt theo tiêu chuẩn an toàn lao động.',
 				)
 			)
 			. tpk_equipment(
 				array(
 					array(
-						'title'    => 'Thiết bị nặng & san lấp',
-						'subtitle' => 'Lu, đào, ủi, san nền',
-						'cols'     => array( 'Thiết bị', 'Số lượng' ),
+						'title'    => 'Thiết bị thi công và vận tải',
+						'subtitle' => 'Lu, xúc, đào, trộn bê tông, sà lan, tàu kéo',
+						'cols'     => array( 'Tên thiết bị', 'Số lượng' ),
 						'items'    => array(
 							array( 'name' => 'Máy lu', 'en' => 'Road roller', 'qty' => '01' ),
 							array( 'name' => 'Máy xúc', 'en' => 'Excavator', 'qty' => '02' ),
+							array( 'name' => 'Xe ben', 'en' => 'Dump truck', 'qty' => '03' ),
 							array( 'name' => 'Máy đào gầu', 'en' => 'Excavator', 'qty' => '04' ),
+							array( 'name' => 'Xe trộn bê tông', 'en' => 'Concrete tank truck', 'qty' => '05' ),
+							array( 'name' => 'Đầm bàn', 'en' => 'Vibrating table', 'qty' => '06' ),
+							array( 'name' => 'Máy tời thép', 'en' => 'Steel winch', 'qty' => '07' ),
+							array( 'name' => 'Máy cắt uốn thép', 'en' => 'Rebar cutting machine', 'qty' => '08' ),
+							array( 'name' => 'Máy trắc đạc điện tử', 'en' => 'Electronic total station', 'qty' => '09' ),
+							array( 'name' => 'Máy đánh mặt', 'en' => 'Screed machine', 'qty' => '10' ),
+							array( 'name' => 'Máy toàn đạc', 'en' => 'Total station', 'qty' => '11' ),
+							array( 'name' => 'Máy thủy bình', 'en' => 'Spirit level', 'qty' => '12' ),
+							array( 'name' => 'Băng tải vận chuyển', 'en' => 'Conveyor belt', 'qty' => '13' ),
+							array( 'name' => 'Máy hàn', 'en' => 'Welding machine', 'qty' => '14' ),
+							array( 'name' => 'Sà lan', 'en' => 'Barge', 'qty' => '02' ),
+							array( 'name' => 'Tàu kéo', 'en' => 'Tugboat', 'qty' => '02' ),
+						),
+					),
+					array(
+						'title'    => 'Thiết bị nâng hạ và hiện trường',
+						'subtitle' => 'Ủi, cẩu, phát điện, giàn giáo, cốp pha',
+						'cols'     => array( 'Tên thiết bị', 'Số lượng' ),
+						'items'    => array(
 							array( 'name' => 'Máy ủi', 'en' => 'Bulldozer', 'qty' => '01' ),
 							array( 'name' => 'Xe xúc lật gầu', 'en' => 'Front loader', 'qty' => '02' ),
-						),
-					),
-					array(
-						'title'    => 'Vận tải, bê tông & cẩu',
-						'subtitle' => 'Ben, trộn, cẩu các loại',
-						'cols'     => array( 'Thiết bị', 'Số lượng' ),
-						'items'    => array(
-							array( 'name' => 'Xe ben', 'en' => 'Dump truck', 'qty' => '03' ),
-							array( 'name' => 'Xe trộn bê tông', 'en' => 'Concrete mixer truck', 'qty' => '05' ),
-							array( 'name' => 'Cẩu tháp', 'en' => 'Tower crane', 'qty' => '07' ),
-							array( 'name' => 'Cẩu bánh hơi', 'en' => 'Mobile crane', 'qty' => '10' ),
-							array( 'name' => 'Máy vận thăng', 'en' => 'Hoist / material lift', 'qty' => '11' ),
-						),
-					),
-					array(
-						'title'    => 'Hiện trường & cốp pha',
-						'subtitle' => 'Điện, nước, khí, giàn giáo',
-						'cols'     => array( 'Thiết bị', 'Số lượng' ),
-						'items'    => array(
+							array( 'name' => 'Xe cào bóc', 'en' => 'Road stabilizer', 'qty' => '03' ),
 							array( 'name' => 'Máy phát điện', 'en' => 'Generator', 'qty' => '04' ),
 							array( 'name' => 'Máy bơm nước', 'en' => 'Water pump', 'qty' => '05' ),
+							array( 'name' => 'Xe dục búa', 'en' => 'Jack hammer excavator', 'qty' => '06' ),
+							array( 'name' => 'Cẩu tháp', 'en' => 'Tower crane', 'qty' => '07' ),
 							array( 'name' => 'Máy nén khí', 'en' => 'Air compressor', 'qty' => '08' ),
-							array( 'name' => 'Hệ giàn giáo nêm', 'en' => 'Scaffolding system', 'qty' => '12' ),
+							array( 'name' => 'Cẩu bánh xích', 'en' => 'Crawler crane', 'qty' => '02' ),
+							array( 'name' => 'Cẩu bánh hơi', 'en' => 'Mobile crane', 'qty' => '10' ),
+							array( 'name' => 'Máy vận thăng', 'en' => 'Elevator / hoist', 'qty' => '11' ),
+							array( 'name' => 'Hệ giàn giáo nêm', 'en' => 'Scaffolding', 'qty' => '12' ),
+							array( 'name' => 'Xà gồ hộp', 'en' => 'Square purlin', 'qty' => '13' ),
 							array( 'name' => 'Cốp pha thép', 'en' => 'Steel formwork', 'qty' => '13' ),
 						),
 					),
 				)
 			)
-			. tpk_title( 'Cơ cấu nhân sự' )
+			. tpk_title( 'Năng lực nhân sự' )
+			. tpk_paras(
+				array(
+					'Đầu tư phát triển nguồn nhân lực – đầu tư cho con người là nền tảng của sự phát triển bền vững.',
+				)
+			)
 			. tpk_team(
 				array(
-					array( 'count' => '5 người', 'role' => 'Ban lãnh đạo', 'desc' => 'Chuyên gia quản lý 15+ năm kinh nghiệm' ),
-					array( 'count' => '15 người', 'role' => 'Kỹ sư xây dựng', 'desc' => 'Có bằng kỹ sư, chứng chỉ hành nghề' ),
-					array( 'count' => '8 người', 'role' => 'Kỹ sư BIM', 'desc' => 'Sáng tạo, giàu kinh nghiệm thiết kế' ),
-					array( 'count' => '12 người', 'role' => 'Giám sát công trình', 'desc' => 'Giám sát chất lượng chặt chẽ 24/7' ),
-					array( 'count' => '10 người', 'role' => 'Trưởng công trường', 'desc' => 'Quản lý tiến độ và nhân sự hiệu quả' ),
-					array( 'count' => '100+ người', 'role' => 'Công nhân lành nghề', 'desc' => 'Tay nghề cao, nhiều năm kinh nghiệm' ),
+					array( 'count' => '50+', 'role' => 'Kỹ sư và nhân viên', 'desc' => 'Engineers and Staff — đội ngũ kỹ thuật nòng cốt của công ty' ),
+					array( 'count' => '70+', 'role' => 'Dự án', 'desc' => 'Projects — số dự án đã và đang triển khai' ),
+					array( 'count' => '250+', 'role' => 'Lao động thường xuyên', 'desc' => 'Permanent Employees — công nhân tay nghề gắn bó dài hạn' ),
+					array( 'count' => '70%', 'role' => 'Trình độ đại học trở lên', 'desc' => 'Bachelor’s degree or higher' ),
+					array( 'count' => '20%', 'role' => 'Trình độ cao đẳng', 'desc' => 'College’s degree' ),
+					array( 'count' => '10%', 'role' => 'Trình độ trung cấp', 'desc' => 'Vocational degree' ),
+				)
+			)
+			. tpk_title( 'Sơ đồ tổ chức' )
+			. tpk_list(
+				array(
+					'Giám đốc',
+					'Phó Giám đốc',
+					'P. Tài chính Kế toán',
+					'P. Hành chính – Nhân sự',
+					'P. Dự án – Kế hoạch – Đấu thầu',
+					'P. Vật tư – Thiết bị',
+					'Các Ban chỉ huy công trường thi công',
 				)
 			),
 		'en'      => array(
 			'slug'    => 'plant-equipment',
 			'content' =>
-				'<h2 class="tp-lead">Plant and construction equipment</h2>'
-				. '<p class="tp-lead-desc">Equipment owned by Tin Phat, ready to mobilise to site</p>'
+				'<h2 class="tp-lead">Equipment capability</h2>'
+				. '<p class="tp-lead-desc">30 types of plant and equipment owned by Tin Phat, ready to mobilise to site</p>'
 				. tpk_paras(
 					array(
-						'Tin Phat owns its construction plant rather than relying on rental companies — a key reason we can hold to the schedules we commit to. All equipment is serviced regularly and operated by certified personnel.',
+						'In order to provide customers with the highest quality products and services, the Company has continuously invested in new, modern equipment with high capacity from globally renowned brands.',
+						'This machinery and equipment not only enhance productivity and performance but also ensure safety for operators through strict procedures that comply with occupational safety standards.',
 					)
 				)
 				. tpk_equipment(
 					array(
 						array(
-							'title'    => 'Heavy plant & earthworks',
-							'subtitle' => 'Rollers, excavators, dozers, levelling',
+							'title'    => 'Construction and transport equipment',
+							'subtitle' => 'Rollers, excavators, mixers, barges, tugboats',
 							'cols'     => array( 'Equipment', 'Quantity' ),
 							'items'    => array(
-								array( 'name' => 'Road roller', 'qty' => '01' ),
-								array( 'name' => 'Excavator', 'qty' => '02' ),
-								array( 'name' => 'Bucket excavator', 'qty' => '04' ),
-								array( 'name' => 'Bulldozer', 'qty' => '01' ),
-								array( 'name' => 'Front loader', 'qty' => '02' ),
+								array( 'name' => 'Road roller', 'en' => '', 'qty' => '01' ),
+								array( 'name' => 'Excavator', 'en' => '', 'qty' => '02' ),
+								array( 'name' => 'Dump truck', 'en' => '', 'qty' => '03' ),
+								array( 'name' => 'Excavator', 'en' => '', 'qty' => '04' ),
+								array( 'name' => 'Concrete tank truck', 'en' => '', 'qty' => '05' ),
+								array( 'name' => 'Vibrating table', 'en' => '', 'qty' => '06' ),
+								array( 'name' => 'Steel winch', 'en' => '', 'qty' => '07' ),
+								array( 'name' => 'Rebar cutting machine', 'en' => '', 'qty' => '08' ),
+								array( 'name' => 'Electronic total station', 'en' => '', 'qty' => '09' ),
+								array( 'name' => 'Screed machine', 'en' => '', 'qty' => '10' ),
+								array( 'name' => 'Total station', 'en' => '', 'qty' => '11' ),
+								array( 'name' => 'Spirit level', 'en' => '', 'qty' => '12' ),
+								array( 'name' => 'Conveyor belt', 'en' => '', 'qty' => '13' ),
+								array( 'name' => 'Welding machine', 'en' => '', 'qty' => '14' ),
+								array( 'name' => 'Barge', 'en' => '', 'qty' => '02' ),
+								array( 'name' => 'Tugboat', 'en' => '', 'qty' => '02' ),
 							),
 						),
 						array(
-							'title'    => 'Transport, concrete & cranes',
-							'subtitle' => 'Dump trucks, mixers, cranes',
+							'title'    => 'Lifting and site equipment',
+							'subtitle' => 'Dozers, cranes, generators, scaffolding, formwork',
 							'cols'     => array( 'Equipment', 'Quantity' ),
 							'items'    => array(
-								array( 'name' => 'Dump truck', 'qty' => '03' ),
-								array( 'name' => 'Concrete mixer truck', 'qty' => '05' ),
-								array( 'name' => 'Tower crane', 'qty' => '07' ),
-								array( 'name' => 'Mobile crane', 'qty' => '10' ),
-								array( 'name' => 'Hoist / material lift', 'qty' => '11' ),
-							),
-						),
-						array(
-							'title'    => 'Site & formwork',
-							'subtitle' => 'Power, water, air, scaffolding',
-							'cols'     => array( 'Equipment', 'Quantity' ),
-							'items'    => array(
-								array( 'name' => 'Generator', 'qty' => '04' ),
-								array( 'name' => 'Water pump', 'qty' => '05' ),
-								array( 'name' => 'Air compressor', 'qty' => '08' ),
-								array( 'name' => 'Scaffolding system', 'qty' => '12' ),
-								array( 'name' => 'Steel formwork', 'qty' => '13' ),
+								array( 'name' => 'Bulldozer', 'en' => '', 'qty' => '01' ),
+								array( 'name' => 'Front loader', 'en' => '', 'qty' => '02' ),
+								array( 'name' => 'Road stabilizer', 'en' => '', 'qty' => '03' ),
+								array( 'name' => 'Generator', 'en' => '', 'qty' => '04' ),
+								array( 'name' => 'Water pump', 'en' => '', 'qty' => '05' ),
+								array( 'name' => 'Jack hammer excavator', 'en' => '', 'qty' => '06' ),
+								array( 'name' => 'Tower crane', 'en' => '', 'qty' => '07' ),
+								array( 'name' => 'Air compressor', 'en' => '', 'qty' => '08' ),
+								array( 'name' => 'Crawler crane', 'en' => '', 'qty' => '02' ),
+								array( 'name' => 'Mobile crane', 'en' => '', 'qty' => '10' ),
+								array( 'name' => 'Elevator / hoist', 'en' => '', 'qty' => '11' ),
+								array( 'name' => 'Scaffolding', 'en' => '', 'qty' => '12' ),
+								array( 'name' => 'Square purlin', 'en' => '', 'qty' => '13' ),
+								array( 'name' => 'Steel formwork', 'en' => '', 'qty' => '13' ),
 							),
 						),
 					)
 				)
-				. tpk_title( 'Our team' )
+				. tpk_title( 'Human resources' )
+				. tpk_paras(
+					array(
+						'Investing in human resources – investing in people is the foundation of sustainable development.',
+					)
+				)
 				. tpk_team(
 					array(
-						array( 'count' => '5', 'role' => 'Leadership', 'desc' => 'Management specialists with 15+ years of experience' ),
-						array( 'count' => '15', 'role' => 'Construction engineers', 'desc' => 'Degree-qualified with practising certificates' ),
-						array( 'count' => '8', 'role' => 'BIM engineers', 'desc' => 'Creative, experienced in design' ),
-						array( 'count' => '12', 'role' => 'Site supervisors', 'desc' => 'Close quality supervision 24/7' ),
-						array( 'count' => '10', 'role' => 'Site managers', 'desc' => 'Effective schedule and workforce management' ),
-						array( 'count' => '100+', 'role' => 'Skilled workers', 'desc' => 'Highly skilled with many years on site' ),
+						array( 'count' => '50+', 'role' => 'Engineers and staff', 'desc' => 'The company’s core technical team' ),
+						array( 'count' => '70+', 'role' => 'Projects', 'desc' => 'Projects completed and under way' ),
+						array( 'count' => '250+', 'role' => 'Permanent employees', 'desc' => 'Skilled workers with long-term commitment' ),
+						array( 'count' => '70%', 'role' => 'Bachelor’s degree or higher', 'desc' => 'Highest qualification level' ),
+						array( 'count' => '20%', 'role' => 'College’s degree', 'desc' => 'Second qualification level' ),
+						array( 'count' => '10%', 'role' => 'Vocational degree', 'desc' => 'Third qualification level' ),
+					)
+				)
+				. tpk_title( 'Organization chart' )
+				. tpk_list(
+					array(
+						'General Director',
+						'Deputy Director',
+						'Finance & Accounting Department',
+						'Administration & Human Resources Department',
+						'Project – Planning & Bidding Department',
+						'Materials & Equipment Department',
+						'Construction Site Management Teams',
 					)
 				),
 		),
@@ -460,64 +600,185 @@ $pages = array(
 	// ===== Chứng chỉ & Giấy phép =====
 	'chung-chi-giay-phep' => array(
 		'content' =>
-			'<h2 class="tp-lead">Chứng chỉ và giấy phép</h2>'
-			. '<p class="tp-lead-desc">Hồ sơ pháp lý đầy đủ cho hoạt động thi công xây dựng</p>'
+			'<h2 class="tp-lead">Cơ sở pháp lý và chứng chỉ</h2>'
+			. '<p class="tp-lead-desc">Hồ sơ pháp nhân đầy đủ cho hoạt động thi công xây dựng</p>'
 			. tpk_paras(
 				array(
-					'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT hoạt động theo đúng quy định pháp luật về xây dựng, với hệ thống chứng chỉ và giấy phép được duy trì và cập nhật đầy đủ.',
+					'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT hoạt động theo đúng quy định pháp luật về xây dựng, với hệ thống hồ sơ pháp lý và chứng chỉ được duy trì, cập nhật đầy đủ.',
 				)
 			)
-			. tpk_list(
-				array(
-					'Giấy phép kinh doanh xây dựng hạng II',
-					'Chứng chỉ ISO 9001:2015 về quản lý chất lượng',
-					'Chứng chỉ ISO 45001 về an toàn lao động',
-					'Chứng chỉ năng lực hoạt động xây dựng',
-					'Các giấy phép môi trường đầy đủ',
-					'Bảo hiểm trách nhiệm công trình',
-				)
-			)
+			. tpk_legal( 'Cơ sở pháp lý và chứng chỉ — trích hồ sơ năng lực Tín Phát' )
 			. tpk_title( 'Thông tin pháp nhân' )
 			. '<table class="tp-company-table"><tbody>'
-			. '<tr><td>Tên đầy đủ</td><td>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT</td></tr>'
+			. '<tr><td>Tên công ty</td><td>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT</td></tr>'
+			. '<tr><td>Tên tiếng Anh</td><td>TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED</td></tr>'
 			. '<tr><td>Tên viết tắt</td><td>TIN PHAT CTI CO., LTD</td></tr>'
+			. '<tr><td>Tên giao dịch</td><td>TIN PHAT CTI CO., LTD</td></tr>'
 			. '<tr><td>Mã số thuế</td><td>3502302391</td></tr>'
 			. '<tr><td>Vốn điều lệ</td><td>3.000.000.000 VNĐ</td></tr>'
+			. '<tr><td>Đại diện</td><td>Ông Bùi Đức Hùng — Giám đốc</td></tr>'
 			. '<tr><td>Trụ sở chính</td><td>106 Nam Kỳ Khởi Nghĩa, phường Vũng Tàu, thành phố Hồ Chí Minh</td></tr>'
+			. '<tr><td>Hotline</td><td>0326 702 600</td></tr>'
+			. '<tr><td>Email</td><td>congtytinphatvungtau@gmail.com</td></tr>'
+			. '<tr><td>Website</td><td>tinphatcons.com</td></tr>'
 			. '</tbody></table>'
-			. '<p><em>Bản scan các chứng chỉ sẽ được cập nhật khi Quý khách có yêu cầu — vui lòng liên hệ hotline 0326 702 600.</em></p>',
+			. tpk_title( 'Hồ sơ năng lực' )
+			. tpk_paras(
+				array(
+					'Giấy chứng nhận đăng ký doanh nghiệp, chứng chỉ năng lực hoạt động xây dựng và hồ sơ pháp lý đầy đủ được cung cấp theo yêu cầu của Chủ đầu tư trong quá trình dự thầu.',
+					'Quý khách vui lòng liên hệ hotline 0326 702 600 hoặc email congtytinphatvungtau@gmail.com để nhận bản hồ sơ năng lực đầy đủ.',
+				)
+			),
 		'en'      => array(
 			'slug'    => 'certificates-licences',
 			'content' =>
-				'<h2 class="tp-lead">Certificates and licences</h2>'
-				. '<p class="tp-lead-desc">A complete legal file for construction operations</p>'
+				'<h2 class="tp-lead">Legal basis and certificates</h2>'
+				. '<p class="tp-lead-desc">A complete corporate file for construction operations</p>'
 				. tpk_paras(
 					array(
-						'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED operates in full compliance with Vietnamese construction law, maintaining a complete and current set of certificates and licences.',
+						'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED operates in full compliance with Vietnamese construction law, maintaining a complete and current set of legal documents and certificates.',
 					)
 				)
-				. tpk_list(
-					array(
-						'Class II construction business licence',
-						'ISO 9001:2015 quality management certificate',
-						'ISO 45001 occupational health and safety certificate',
-						'Construction capability certificate',
-						'Full environmental permits',
-						'Construction liability insurance',
-					)
-				)
-				. tpk_title( 'Legal entity details' )
+				. tpk_legal( 'Legal basis and certificates — from the Tin Phat company profile' )
+				. tpk_title( 'Company information' )
 				. '<table class="tp-company-table"><tbody>'
-				. '<tr><td>Full name</td><td>TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED</td></tr>'
+				. '<tr><td>Company name</td><td>TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED</td></tr>'
+				. '<tr><td>Vietnamese name</td><td>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT</td></tr>'
 				. '<tr><td>Short name</td><td>TIN PHAT CTI CO., LTD</td></tr>'
+				. '<tr><td>Trade name</td><td>TIN PHAT CTI CO., LTD</td></tr>'
 				. '<tr><td>Tax code</td><td>3502302391</td></tr>'
 				. '<tr><td>Charter capital</td><td>VND 3,000,000,000</td></tr>'
-				. '<tr><td>Head office</td><td>106 Nam Ky Khoi Nghia, Vung Tau Ward, Ho Chi Minh City</td></tr>'
+				. '<tr><td>Representative</td><td>Mr. Bui Duc Hung — Director</td></tr>'
+				. '<tr><td>Main office</td><td>106 Nam Ky Khoi Nghia, Vung Tau Ward, Ho Chi Minh City</td></tr>'
+				. '<tr><td>Hotline</td><td>0326 702 600</td></tr>'
+				. '<tr><td>Email</td><td>congtytinphatvungtau@gmail.com</td></tr>'
+				. '<tr><td>Website</td><td>tinphatcons.com</td></tr>'
 				. '</tbody></table>'
-				. '<p><em>Scanned copies of our certificates are available on request — please call our hotline on 0326 702 600.</em></p>',
+				. tpk_title( 'Capability profile' )
+				. tpk_paras(
+					array(
+						'Business registration certificates, construction capability certificates and the full legal file are provided at the Investor\'s request during tendering.',
+						'Please contact our hotline on 0326 702 600 or email congtytinphatvungtau@gmail.com to receive the complete capability profile.',
+					)
+				),
 		),
 	),
+
 );
+
+
+/**
+ * Ảnh cơ sở pháp lý (trang đôi 08–09 của hồ sơ năng lực).
+ *
+ * Render 2200px để nét trên màn Retina (hiển thị ~1100px, DPR 2).
+ *
+ * LƯU Ý: ảnh ở độ phân giải này ĐỌC ĐƯỢC số CCCD, số tài khoản ngân hàng
+ * và địa chỉ thường trú của người đại diện. Khách hàng đã xác nhận đồng ý
+ * công khai. Nếu đổi ý, giảm dpi trong script tạo ảnh hoặc bôi đen vùng
+ * nhạy cảm trước khi đăng.
+ *
+ * @param string $caption Chú thích dưới ảnh.
+ */
+function tpk_legal( string $caption ): string {
+	return '<figure class="tp-legal">'
+		. '<img src="' . esc_url( tpk_img( 'tp-legal-page.webp' ) ) . '"'
+		. ' alt="' . esc_attr( $caption ) . '"'
+		. ' width="2200" height="1560" loading="lazy" decoding="async">'
+		. '<figcaption>' . esc_html( $caption ) . '</figcaption>'
+		. '</figure>';
+}
+
+/**
+ * Hàng ảnh + nội dung, xen kẽ trái/phải theo bố cục hồ sơ năng lực.
+ *
+ * @param array<int,array{image:string,title:string,en:string,items:array<int,string>}> $rows Hàng.
+ */
+function tpk_rows( array $rows ): string {
+	$html = '';
+
+	foreach ( $rows as $i => $row ) {
+		$flip = 1 === $i % 2 ? ' tp-cap-row--flip' : '';
+
+		$html .= '<div class="tp-cap-row' . $flip . '">'
+			. '<div class="tp-cap-row__media">'
+			. '<img src="' . esc_url( tpk_img( $row['image'] ) ) . '" alt="' . esc_attr( $row['title'] ) . '"'
+			. ' width="960" height="600" loading="lazy" decoding="async"></div>'
+			. '<div class="tp-cap-row__body"><h3>' . esc_html( $row['title'] ) . '</h3>'
+			. ( '' !== $row['en'] ? '<p class="tp-cap-row__en">' . esc_html( $row['en'] ) . '</p>' : '' )
+			. '<ul>'
+			. implode( '', array_map( static fn( $x ) => '<li>' . esc_html( $x ) . '</li>', $row['items'] ) )
+			. '</ul></div></div>';
+	}
+
+	return $html;
+}
+
+/**
+ * Sơ đồ tổ chức dạng cây (giám đốc → phó GĐ → phòng ban → ban chỉ huy).
+ *
+ * @param array<int,array{class:string,nodes:array<int,array{0:string,1:string}>}> $levels Các cấp.
+ */
+function tpk_org( array $levels ): string {
+	$html  = '<div class="tp-org">';
+	$total = count( $levels );
+
+	foreach ( $levels as $i => $level ) {
+		$html .= '<div class="tp-org__level ' . esc_attr( $level['class'] ) . '">';
+
+		foreach ( $level['nodes'] as $node ) {
+			$html .= '<div class="tp-org__node"><strong>' . esc_html( $node[0] ) . '</strong>'
+				. '<span>' . esc_html( $node[1] ) . '</span></div>';
+		}
+
+		$html .= '</div>';
+
+		if ( $i < $total - 1 ) {
+			$html .= '<div class="tp-org__connector"></div>';
+		}
+	}
+
+	return $html . '</div>';
+}
+
+/**
+ * Biểu đồ trình độ nhân sự dạng thanh ngang.
+ *
+ * @param array<int,array{0:string,1:string,2:int}> $items Nhãn VI, nhãn EN, phần trăm.
+ */
+function tpk_edu( array $items ): string {
+	$html = '<div class="tp-edu">';
+
+	foreach ( $items as $item ) {
+		$html .= '<div class="tp-edu__item">'
+			. '<div class="tp-edu__head"><span>' . esc_html( $item[0] ) . ' <em>' . esc_html( $item[1] ) . '</em></span>'
+			. '<span>' . (int) $item[2] . '%</span></div>'
+			. '<div class="tp-edu__bar"><div class="tp-edu__fill" style="width:' . (int) $item[2] . '%"></div></div>'
+			. '</div>';
+	}
+
+	return $html . '</div>';
+}
+
+/**
+ * Khối tải hồ sơ năng lực PDF.
+ *
+ * @param string $title Tiêu đề.
+ * @param string $desc  Mô tả (kèm dung lượng).
+ * @param string $label Nhãn nút.
+ */
+function tpk_download( string $title, string $desc, string $label ): string {
+	$url = content_url( 'uploads/tinphat-docs/ho-so-nang-luc-tin-phat.pdf' );
+
+	return '<div class="tp-download">'
+		. '<div class="tp-download__text"><h3>' . esc_html( $title ) . '</h3>'
+		. '<p>' . esc_html( $desc ) . '</p></div>'
+		. '<a class="tp-download__btn" href="' . esc_url( $url ) . '" download>'
+		. '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"'
+		. ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+		. '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>'
+		. '<path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>'
+		. esc_html( $label ) . '</a></div>';
+}
 
 /** Tìm trang theo slug, lọc theo ngôn ngữ. */
 function tpk_find_page( string $slug, string $lang ): ?WP_Post {

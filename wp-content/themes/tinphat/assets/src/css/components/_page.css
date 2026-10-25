@@ -328,7 +328,9 @@
 
 .cc-root .tp-logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  /* auto-fit (không phải auto-fill): cột rỗng bị thu về 0 nên hàng cuối
+     không còn ô xám thừa khi số logo không chia hết. */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1px;
   background: #e5e7eb;
   border: 1px solid #e5e7eb;
@@ -347,20 +349,12 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  /* Logo nhiều màu về một tông xám, sáng lên khi hover — giống centralcons. */
-  filter: grayscale(1);
-  opacity: 0.72;
-  transition: filter 0.25s, opacity 0.25s;
+  /* Logo đối tác để nguyên màu gốc, không lọc xám. */
+  transition: transform 0.25s;
 }
 
 .cc-root .tp-logo-grid__cell:hover img {
-  filter: none;
-  opacity: 1;
-}
-
-/* Ô trống giữ lưới thẳng hàng khi số logo không chia hết. */
-.cc-root .tp-logo-grid__cell--empty {
-  background: #fafafa;
+  transform: scale(1.04);
 }
 
 /* ----- Lĩnh vực phục vụ (thẻ có ảnh) ----- */
@@ -862,4 +856,236 @@
   .cc-root .tp-stats {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* ===== Khối theo hồ sơ năng lực PDF ===== */
+
+/* ----- Hàng ảnh + nội dung (xen kẽ trái/phải) ----- */
+.cc-root .tp-cap-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.cc-root .tp-cap-row__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Hàng chẵn đảo chiều cho đỡ đơn điệu, giống bố cục PDF. */
+.cc-root .tp-cap-row--flip .tp-cap-row__media {
+  order: 2;
+}
+
+.cc-root .tp-cap-row__body h3 {
+  margin: 0 0 0.75rem;
+  color: #0f145b;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+}
+
+.cc-root .tp-cap-row__en {
+  margin: -0.5rem 0 1rem;
+  color: #b3541c;
+  font-size: 0.92rem;
+  font-style: italic;
+  text-align: left;
+}
+
+.cc-root .tp-cap-row__body ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.cc-root .tp-cap-row__body li {
+  margin-bottom: 0.4rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ----- Sơ đồ tổ chức ----- */
+.cc-root .tp-org {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-org__level {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.cc-root .tp-org__node {
+  flex: 0 1 auto;
+  min-width: 200px;
+  max-width: 360px;
+  padding: 0.85rem 1.1rem;
+  text-align: center;
+  background: #0f145b;
+  color: #fff;
+}
+
+/* Cấp 1 (Giám đốc) nhấn bằng màu cam như sơ đồ trong PDF. */
+.cc-root .tp-org__level--top .tp-org__node {
+  background: #e17126;
+}
+
+.cc-root .tp-org__level--mid .tp-org__node {
+  background: #1b2272;
+}
+
+/* Khối phòng ban: nền nhạt hơn, chữ xanh đậm. */
+.cc-root .tp-org__level--dept .tp-org__node {
+  background: #eef0f7;
+  color: #0f145b;
+}
+
+.cc-root .tp-org__node strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-org__node span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Đường nối giữa các cấp. */
+.cc-root .tp-org__connector {
+  width: 2px;
+  height: 22px;
+  margin: 0 auto 0.85rem;
+  background: #c7cae4;
+}
+
+/* ----- Biểu đồ trình độ (thanh ngang) ----- */
+.cc-root .tp-edu {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.cc-root .tp-edu__item {
+  margin-bottom: 1.1rem;
+}
+
+.cc-root .tp-edu__head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+  color: #0f145b;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cc-root .tp-edu__head em {
+  color: #6b7280;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.cc-root .tp-edu__bar {
+  height: 14px;
+  background: #eef0f7;
+  overflow: hidden;
+}
+
+.cc-root .tp-edu__fill {
+  height: 100%;
+  background: #e17126;
+}
+
+/* ----- Nút tải hồ sơ ----- */
+.cc-root .tp-download {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  align-items: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: #0f145b;
+}
+
+.cc-root .tp-download__text {
+  flex: 1 1 260px;
+}
+
+.cc-root .tp-download__text h3 {
+  margin: 0 0 0.4rem;
+  color: #fff;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+}
+
+.cc-root .tp-download__text p {
+  margin: 0;
+  color: #c7cae4;
+  font-size: 0.93rem;
+  text-align: left;
+}
+
+.cc-root .tp-download__btn {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.85rem 1.9rem;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background: #e17126;
+  transition: background-color 0.25s;
+}
+
+.cc-root .tp-download__btn:hover {
+  color: #fff;
+  background: #b3541c;
+}
+
+.cc-root .tp-download__btn svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+@media (max-width: 767px) {
+  .cc-root .tp-cap-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Mobile: ảnh luôn lên trên cho dễ đọc. */
+  .cc-root .tp-cap-row--flip .tp-cap-row__media {
+    order: 0;
+  }
+
+  .cc-root .tp-org__node {
+    min-width: 100%;
+  }
+}
+
+/* ----- Ảnh cơ sở pháp lý ----- */
+.cc-root .tp-legal {
+  margin: 0 0 clamp(2rem, 4vw, 2.5rem);
+}
+
+.cc-root .tp-legal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e5e7eb;
+}
+
+.cc-root .tp-legal figcaption {
+  margin-top: 0.6rem;
+  color: #6b7280;
+  font-size: 0.87rem;
+  font-style: italic;
+  text-align: center;
 }

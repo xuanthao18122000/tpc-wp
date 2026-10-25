@@ -109,3 +109,398 @@
   font-size: 0.9rem;
   font-weight: 700;
 }
+
+/* ===== Chi tiết dự án ===== */
+
+.cc-root .tp-project-detail__aside {
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: #f7f8fb;
+  border-top: 3px solid #e17126;
+}
+
+.cc-root .tp-project-detail__title {
+  margin: 0 0 1rem;
+  color: #0f145b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-project-detail__facts {
+  margin: 0 0 1.5rem;
+}
+
+.cc-root .tp-project-detail__facts dt {
+  margin-bottom: 0.2rem;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-project-detail__facts dd {
+  margin: 0 0 1rem;
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.cc-root .tp-project-detail__facts dd:last-child {
+  margin-bottom: 0;
+}
+
+.cc-root .tp-project-related {
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.cc-root .tp-project-detail__back {
+  margin: 0;
+}
+
+.cc-root .tp-project-detail__back a {
+  color: #b3541c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cc-root .tp-project-detail__back a:hover {
+  text-decoration: underline;
+}
+
+/* Giá trị hợp đồng: nhấn bằng màu cam đậm cho dễ quét mắt. */
+.cc-root .tp-project-detail__value {
+  color: #b3541c;
+  font-weight: 700;
+}
+
+/* ----- Thư viện ảnh công trường ----- */
+.cc-root .tp-project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.cc-root .tp-project-gallery__item {
+  margin: 0;
+  overflow: hidden;
+}
+
+.cc-root .tp-project-gallery__item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.cc-root .tp-project-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 575px) {
+  .cc-root .tp-project-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Tiêu đề khối thư viện ảnh trong trang chi tiết. */
+.cc-root .tp-project-gallery__title {
+  margin: clamp(1.75rem, 3vw, 2.25rem) 0 0.85rem;
+  color: #0f145b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Sidebar dự án dùng chung style với sidebar tin, chỉ khác dòng địa điểm. */
+.cc-root .tp-news-sidebar__loc {
+  color: #b3541c;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Khối "Dự án khác" ở cuối trang tách khỏi phần 2 cột. */
+.cc-root .tp-project-related {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ===== Danh sách dự án (archive, bố cục ngang như centralcons) ===== */
+
+/* ----- Dải lọc dưới banner ----- */
+.cc-root .project_filter {
+  background: #0f145b;
+}
+
+.cc-root .project_filter .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+}
+
+.cc-root .project_filter__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-root .project_filter__list a {
+  color: #c7cae4;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+
+.cc-root .project_filter__list a:hover,
+.cc-root .project_filter__list .active a {
+  color: #e17126;
+}
+
+.cc-root .project_filter__count {
+  color: #c7cae4;
+  font-size: 0.88rem;
+}
+
+/* ----- Thẻ dự án ngang ----- */
+.cc-root .page_project .project_item {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.cc-root .page_project .project_item:hover {
+  border-color: #e17126;
+  box-shadow: 0 12px 32px rgb(15 20 91 / 10%);
+}
+
+.cc-root .page_project .project_item figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Hai cột trong thẻ phải cao bằng nhau thì ảnh mới lấp đầy phần của
+   mình; nếu không figure co theo nội dung và để lại mảng trắng lớn.
+   Chiều cao thẻ do cột ảnh quyết định nên phải chặn lại, không thì
+   ảnh dọc kéo thẻ cao gấp đôi. */
+.cc-root .page_project .project_item > .row {
+  align-items: stretch;
+}
+
+.cc-root .page_project .project_item > .row > .col-md-4 {
+  max-height: 190px;
+}
+
+.cc-root .page_project .project_item > .row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.cc-root .page_project .project_item figure img,
+.cc-root .page_project .project_item figure .tp-thumb-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Không đặt aspect-ratio ở desktop: ảnh cao bằng thẻ (do hai cột
+     stretch), object-fit lo phần cắt cho khỏi méo. */
+  object-fit: cover;
+  background: #e9e9e9;
+  transition: transform 0.4s;
+}
+
+.cc-root .page_project .project_item figure a {
+  display: block;
+  height: 100%;
+}
+
+.cc-root .page_project .project_item:hover figure img {
+  transform: scale(1.05);
+}
+
+.cc-root .page_project .project_item .project_meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Template để 2rem; thu lại cho thẻ thấp hơn. */
+  padding: clamp(0.9rem, 1.8vw, 1.25rem) clamp(1rem, 2vw, 1.4rem);
+}
+
+.cc-root .page_project .project_item .project_meta h3 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  line-height: 1.3;
+}
+
+.cc-root .page_project .project_item .project_meta h3 a {
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.cc-root .page_project .project_item:hover .project_meta h3 a {
+  color: #e17126;
+}
+
+.cc-root .page_project .project_loc {
+  margin: 0 0 0.4rem;
+  color: #b3541c;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.cc-root .page_project .project_item .excerpt p {
+  margin: 0 0 0.6rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: left;
+  /* Giới hạn 2 dòng để mọi thẻ cao bằng nhau. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cc-root .page_project a.read_more {
+  align-self: flex-start;
+  color: #0f145b;
+  font-size: 0.86rem;
+  text-decoration: none;
+}
+
+.cc-root .page_project .project_item:hover a.read_more {
+  color: #e17126;
+}
+
+@media (max-width: 767px) {
+  /* Template đã chuyển .project_list về display:block ở mobile;
+     chỉ cần trả ảnh về tỉ lệ ngang cho cân đối. */
+  .cc-root .page_project .project_item figure img,
+  .cc-root .page_project .project_item figure .tp-thumb-placeholder {
+    aspect-ratio: 2 / 1;
+  }
+}
+
+/* ===== Carousel dự án trang chủ =====
+ *
+ * Dùng lại CSS .slider_projects có sẵn của template, vốn viết cho
+ * slick. Ba chỗ cần bù vì ta chạy Swiper:
+ *
+ *  1. Template canh giữa các slide bằng .slick-track; Swiper dùng
+ *     .swiper-wrapper nên phải đặt align-items lại, nếu không slide
+ *     active (cao hơn) sẽ đẩy các slide bên cạnh lệch lên trên.
+ *  2. .item:not(.slick-active) để pointer-events:none — với slick thì
+ *     chỉ slide giữa bấm được, nhưng ở đây 3 slide đều hiện nên phải
+ *     trả lại khả năng bấm.
+ *  3. Swiper không có container Bootstrap bao ngoài, cần chừa lề hai
+ *     bên cho khớp .container.
+ */
+.cc-root .project_section .slider_projects .swiper-wrapper {
+  align-items: center;
+}
+
+.cc-root .project_section .slider_projects .item:not(.slick-active) {
+  pointer-events: auto;
+}
+
+/* Slider tràn hết bề ngang màn hình, slide giữa nằm đúng tâm — các
+   slide hai bên chỉ ló một phần, giống carousel bên trang mẫu. */
+.cc-root .project_section .slider_projects {
+  padding-inline: 0;
+}
+
+.cc-root .project_section {
+  padding-top: 2.5rem;
+}
+
+.cc-root .project_section .title_project {
+  margin-bottom: 1.5rem;
+}
+
+/* Chấm điều hướng theo màu thương hiệu. */
+.cc-root .project_section .swiper-pagination {
+  position: static;
+  margin-top: 1.25rem;
+}
+
+.cc-root .project_section .swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  background: #c7cbd8;
+  opacity: 1;
+}
+
+.cc-root .project_section .swiper-pagination-bullet-active {
+  background: #e17126;
+}
+
+/* Nút trái/phải của template định vị theo slick; canh lại cho Swiper. */
+.cc-root .project_section .slider_projects .left_nav,
+.cc-root .project_section .slider_projects .right_nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.cc-root .project_section .slider_projects .left_nav {
+  left: 1rem;
+}
+
+.cc-root .project_section .slider_projects .right_nav {
+  right: 1rem;
+}
+
+/* Gradient của template (trong suốt -> đen 60%%) đủ cho ảnh phối cảnh
+   tối màu, nhưng ảnh công trường thật của Tín Phát nhiều mảng sáng
+   (áo bảo hộ trắng, trời loá) làm tên dự án tụt xuống 2.2:1.
+   Tăng độ đậm và kéo gradient lên cao hơn để chữ trắng luôn đạt AA. */
+.cc-root .project_section .slider_projects .item .wrapper figure::after {
+  background: linear-gradient(
+    rgb(0 0 0 / 0%) 28%,
+    rgb(0 0 0 / 45%) 55%,
+    rgb(0 0 0 / 78%) 78%,
+    rgb(0 0 0 / 88%) 100%
+  );
+}
+
+/* Khớp kích thước slide với trang mẫu: rộng 376px, cách nhau 24px
+   (bước nhảy 400px). Dùng slidesPerView:'auto' nên bề rộng do CSS
+   quyết định, không co giãn theo bề ngang màn hình. */
+@media (min-width: 992px) {
+  .cc-root .project_section .slider_projects .swiper-slide.item {
+    width: 376px;
+  }
+}
+
+/* Khi rê chuột, bảng thông tin xổ ra đẩy cả khối chữ lên cao — tới
+   vùng gradient còn nhạt nên chữ trắng chìm vào ảnh. Phủ thêm nền tối
+   cho riêng khối chữ lúc hover (ảnh vẫn thấy rõ ở nửa trên). */
+.cc-root .project_section .slider_projects .item .wrapper .meta_info {
+  transition: background 0.5s ease-in-out;
+}
+
+.cc-root .project_section .slider_projects .item:hover .wrapper .meta_info {
+  background: linear-gradient(
+    rgb(8 12 48 / 0%) 0%,
+    rgb(8 12 48 / 72%) 18%,
+    rgb(8 12 48 / 88%) 45%,
+    rgb(8 12 48 / 92%) 100%
+  );
+}

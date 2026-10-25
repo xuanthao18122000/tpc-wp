@@ -99,24 +99,37 @@ class TinPhat_Projects extends TinPhat_Shortcode {
 
 		ob_start();
 		?>
-		<section class="tp-projects">
-			<?php if ( '' !== $atts['title'] ) : ?>
-				<h2 class="tp-projects__title"><?php echo esc_html( $atts['title'] ); ?></h2>
-			<?php endif; ?>
+		<div class="project_section pt-3">
+			<div class="container">
+				<?php if ( '' !== $atts['title'] ) : ?>
+					<div class="title_project">
+						<div class="row align-items-center justify-content-between">
+							<div class="col-auto">
+								<h3 class="fs-40 fw-bold"><?php echo esc_html( $atts['title'] ); ?></h3>
+							</div>
+							<div class="col">
+								<div class="line_img"></div>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
 
-			<div class="swiper tp-projects__slider">
+			<div class="swiper slider_projects">
 				<div class="swiper-wrapper">
 					<?php
 					while ( $query->have_posts() ) :
 						$query->the_post();
-						get_template_part( 'template-parts/project', 'card' );
+						get_template_part( 'template-parts/project/slide' );
 					endwhile;
 					?>
 				</div>
-				<div class="swiper-button-prev" role="button" tabindex="0" aria-label="<?php esc_attr_e( 'Slide trước', 'tinphat' ); ?>"></div>
-				<div class="swiper-button-next" role="button" tabindex="0" aria-label="<?php esc_attr_e( 'Slide sau', 'tinphat' ); ?>"></div>
+
+				<div class="left_nav" role="button" tabindex="0" aria-label="<?php esc_attr_e( 'Slide trước', 'tinphat' ); ?>"></div>
+				<div class="right_nav" role="button" tabindex="0" aria-label="<?php esc_attr_e( 'Slide sau', 'tinphat' ); ?>"></div>
+				<div class="swiper-pagination"></div>
 			</div>
-		</section>
+		</div>
 		<?php
 		wp_reset_postdata();
 

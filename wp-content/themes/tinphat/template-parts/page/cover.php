@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $tp_cover = has_post_thumbnail()
 	? (string) get_the_post_thumbnail_url( null, 'full' )
-	: tinphat_uploads_url( 'banner-02.webp' ); // MOCKUP: thay bằng ảnh bìa riêng của Tín Phát.
+	: tinphat_uploads_url( 'banner-01.webp' ); // MOCKUP: thay bằng ảnh bìa riêng của Tín Phát.
 
 $tp_parent = wp_get_post_parent_id( get_the_ID() );
 ?>

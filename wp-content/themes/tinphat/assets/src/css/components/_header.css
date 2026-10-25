@@ -327,3 +327,164 @@
 .cc-root #header_site .menu_site .sub-menu a:hover {
   color: #b3541c;
 }
+
+/* ----- Menu desktop ở khổ tablet -----
+ *
+ * Header chia cột cố định col-md-2 (logo) + col-md-10 (menu), và
+ * .menu_site để flex-wrap:nowrap. Ở khổ 768-991px menu tiếng Anh
+ * rộng hơn phần cột được chia nên các mục tràn ngược sang trái,
+ * đè chồng lên logo.
+ *
+ * Ép menu ngang vừa khổ đó thì chữ nhỏ và chật; cho xuống dòng thì
+ * header cao gấp đôi. Theme đã có sẵn drawer hamburger cho mobile,
+ * nên giải pháp gọn nhất là dùng drawer tới hết khổ 991px, chỉ bật
+ * menu ngang từ 992px — nơi nó thực sự đủ chỗ.
+ */
+@media (max-width: 991px) {
+  /* Ẩn menu ngang, hiện nút hamburger (Bootstrap đặt mốc ở 768px). */
+  .cc-root #header_site .head_menu .d-md-flex.d-none {
+    display: none !important;
+  }
+
+  .cc-root #header_site .head_menu .d-flex.d-md-none {
+    display: flex !important;
+  }
+
+  /* Trả hai cột về 50/50 như khổ mobile. */
+  .cc-root #header_site .head_menu .row > .col-md-2,
+  .cc-root #header_site .head_menu .row > .col-md-10 {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Từ 992px menu ngang đã đủ chỗ; chỉ thu nhẹ khoảng cách ở khổ hẹp. */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .cc-root #header_site .menu_site li:not(:last-child) {
+    margin-right: clamp(14px, 1.8vw, 26px);
+  }
+
+  .cc-root #header_site .menu_site li a {
+    font-size: 12px;
+  }
+}
+
+/* ----- Drawer menu mobile -----
+ *
+ * Drawer để z-index:100 trong template, thấp hơn header (1020), nên
+ * thanh header che mất phần đầu drawer — hai mục đầu (Trang chủ,
+ * Giới thiệu) bị khuất và không bấm được.
+ *
+ * Nâng drawer lên trên header, và chừa khoảng trống bằng chiều cao
+ * header để nút đóng không nằm chồng lên logo.
+ */
+.cc-root #menu_mobile {
+  z-index: 1080;
+}
+
+.cc-root .overlay_menu {
+  z-index: 1070;
+}
+
+/* Bộ chuyển ngôn ngữ trong drawer để position:absolute nên nằm đè lên
+   mục đầu của menu. Trả về dòng chảy bình thường, đặt lên trên danh sách. */
+.cc-root #menu_mobile .menu_lang {
+  position: static;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ----- Thay icon FontAwesome bằng SVG -----
+ *
+ * Template vẽ mũi tên bằng icon font FontAwesome, nhưng dự án đã bỏ
+ * font đó (dùng SVG cho nhẹ). Ký tự không có glyph nên trình duyệt vẽ
+ * ô vuông rỗng — thấy rõ ở nút VI/EN trên header và ở mục có menu con
+ * trong drawer mobile.
+ *
+ * Vẽ lại bằng SVG nhúng dạng data-URI: không cần tải thêm font, màu
+ * khớp chữ, và không phụ thuộc glyph nào cả.
+ */
+.cc-root #header_site .top_line .menu_lang::before,
+.cc-root #menu_mobile .menu_site li.menu-item-has-children::before {
+  width: 10px;
+  height: 10px;
+  content: "";
+  background-color: currentcolor;
+  /* Tam giác trỏ xuống. */
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M1 3.5 L5 7.5 L9 3.5 Z" fill="black"/></svg>');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  font-family: inherit;
+}
+
+.cc-root #header_site .top_line .menu_lang::before {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ----- Lá cờ trong bộ chuyển ngôn ngữ ----- */
+.cc-root .menu_lang a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cc-root .menu_lang .lang_flag {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 11px;
+  /* Ảnh cờ của Polylang là PNG 16x11; viền mảnh giúp cờ nền trắng
+     (ví dụ cờ Anh) không chìm vào nền sáng của header. */
+  object-fit: cover;
+  border: 1px solid rgb(0 0 0 / 12%);
+}
+
+/* Trong drawer mobile chữ to hơn nên cờ cũng phóng theo cho cân. */
+.cc-root #menu_mobile .menu_lang .lang_flag {
+  width: 20px;
+  height: 14px;
+}
+
+/* ----- Chuyển ngôn ngữ trong drawer mobile -----
+ *
+ * Markup là menu xổ (ngôn ngữ khác nằm trong <ul> con, chỉ hiện khi
+ * :hover). Điện thoại không có hover nên link đổi ngôn ngữ bị ẩn hẳn
+ * — người dùng mobile không sang được bản tiếng Anh.
+ *
+ * Trong drawer thì trải phẳng: hiện cả hai ngôn ngữ cạnh nhau.
+ */
+@media (max-width: 991px) {
+  .cc-root #menu_mobile .menu_lang > li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .cc-root #menu_mobile .menu_lang > li > ul {
+    position: static;
+    display: flex;
+    gap: 0.75rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    visibility: visible;
+    opacity: 1;
+    background: none;
+    box-shadow: none;
+    transition: none;
+  }
+
+  .cc-root #menu_mobile .menu_lang > li > ul a {
+    padding: 0;
+  }
+
+  /* Ngôn ngữ đang xem: làm mờ nhẹ và bỏ con trỏ bấm, vì bấm vào
+     không đi đâu cả (href="#"). */
+  .cc-root #menu_mobile .menu_lang > li > a[href="#"] {
+    cursor: default;
+    opacity: 0.55;
+  }
+}

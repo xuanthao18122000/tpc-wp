@@ -46,87 +46,111 @@ $pages = array(
 
 	// ===== Tổng quan =====
 	'tong-quan' => array(
-		'content' => '<h2 class="tp-lead">UY TÍN - CHẤT LƯỢNG - TIẾN BỘ</h2>'
-			. '<p class="tp-lead-desc">Đối tác tin cậy cho các dự án xây dựng dân dụng, thương mại và công nghiệp</p>'
+		'content' => '<h2 class="tp-lead">UY TÍN – CHẤT LƯỢNG – TIẾN ĐỘ</h2>'
+			. '<p class="tp-lead-desc">Nhà thầu thi công hạ tầng kỹ thuật, giao thông đường bộ và đường thuỷ, hàng hải</p>'
 			. tp_table(
 				array(
-					array( 'Tên đầy đủ', 'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT' ),
+					array( 'Tên công ty', 'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT' ),
 					array( 'Tên tiếng Anh', 'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED' ),
 					array( 'Tên viết tắt', 'TIN PHAT CTI CO., LTD' ),
+					array( 'Tên giao dịch', 'TIN PHAT CTI CO., LTD' ),
 					array( 'Mã số thuế', '3502302391' ),
 					array( 'Vốn điều lệ', '3.000.000.000 VNĐ' ),
+					array( 'Đại diện', 'Ông Bùi Đức Hùng — Giám đốc' ),
 					array( 'Trụ sở chính', '106 Nam Kỳ Khởi Nghĩa, phường Vũng Tàu, thành phố Hồ Chí Minh' ),
 					array( 'Hotline', '0326 702 600' ),
-					array( 'Website', 'tinphatcons.com' ),
 					array( 'Email', 'congtytinphatvungtau@gmail.com' ),
+					array( 'Website', 'tinphatcons.com' ),
 				)
 			)
-			. '<h3 class="tp-mission">"Uy Tín - Chất Lượng - Tiến Bộ"</h3>'
+			. '<h3 class="tp-mission">"Uy tín – Chất lượng – Tiến độ"</h3>'
 			. tp_paras(
 				array(
-					'Được thành lập với sứ mệnh mang đến những công trình xây dựng chất lượng cao, CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT đã và đang khẳng định vị thế của mình trên thị trường xây dựng tại TP.HCM.',
-					'Với đội ngũ kỹ sư, kiến trúc sư giàu kinh nghiệm cùng đội ngũ công nhân lành nghề, chúng tôi cam kết mang đến cho khách hàng những công trình đạt chất lượng cao nhất, đúng tiến độ và giá cả hợp lý.',
-					'Chúng tôi chuyên thi công các dự án dân dụng, công nghiệp và thương mại với quy trình làm việc chuyên nghiệp, minh bạch và luôn đặt sự hài lòng của khách hàng lên hàng đầu.',
+					'Với định hướng phát triển bền vững và mục tiêu mang đến những giải pháp xây dựng chất lượng – tối ưu – hiệu quả, Tín Phát được thành lập nhằm cung cấp các dịch vụ thi công xây dựng, đầu tư – thương mại, hoàn thiện công trình và cung ứng giải pháp kỹ thuật cho doanh nghiệp và các dự án trên toàn quốc.',
+					'Tín Phát luôn đặt uy tín – chất lượng – tiến độ làm kim chỉ nam trong mọi hoạt động. Chúng tôi tự hào sở hữu đội ngũ kỹ sư – kỹ thuật viên giàu kinh nghiệm, quy trình làm việc chuyên nghiệp cùng năng lực thi công vững mạnh.',
+					'Công ty hiện có hơn 50 kỹ sư và nhân viên, hơn 250 lao động thường xuyên, cùng 30 loại máy móc thiết bị thuộc sở hữu. Tín Phát là nhà thầu thi công cho nhiều dự án hạ tầng của Tổng Công ty CP Dịch vụ Kỹ thuật Dầu khí Việt Nam (PTSC), các Ban QLDA giao thông và Sở Giao thông Vận tải cấp tỉnh.',
 				)
 			),
 		'en'      => array(
 			'slug'    => 'overview',
-			'content' => '<h2 class="tp-lead">INTEGRITY - QUALITY - PROGRESS</h2>'
-				. '<p class="tp-lead-desc">A trusted partner for residential, commercial and industrial construction projects</p>'
+			'content' => '<h2 class="tp-lead">INTEGRITY – QUALITY – PROGRESS</h2>'
+				. '<p class="tp-lead-desc">A contractor for technical infrastructure, road, waterway and maritime construction</p>'
 				. tp_table(
 					array(
-						array( 'Full name', 'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED' ),
+						array( 'Company name', 'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED' ),
 						array( 'Vietnamese name', 'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT' ),
 						array( 'Short name', 'TIN PHAT CTI CO., LTD' ),
+						array( 'Trade name', 'TIN PHAT CTI CO., LTD' ),
 						array( 'Tax code', '3502302391' ),
 						array( 'Charter capital', 'VND 3,000,000,000' ),
-						array( 'Head office', '106 Nam Ky Khoi Nghia, Vung Tau Ward, Ho Chi Minh City' ),
+						array( 'Representative', 'Mr. Bui Duc Hung — Director' ),
+						array( 'Main office', '106 Nam Ky Khoi Nghia, Vung Tau Ward, Ho Chi Minh City' ),
 						array( 'Hotline', '0326 702 600' ),
-						array( 'Website', 'tinphatcons.com' ),
 						array( 'Email', 'congtytinphatvungtau@gmail.com' ),
+						array( 'Website', 'tinphatcons.com' ),
 					)
 				)
-				. '<h3 class="tp-mission">"Integrity - Quality - Progress"</h3>'
+				. '<h3 class="tp-mission">"Integrity – Quality – Progress"</h3>'
 				. tp_paras(
 					array(
-						'Founded with the mission of delivering high-quality construction works, TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED has steadily established its position in the Ho Chi Minh City construction market.',
-						'With experienced engineers and architects alongside a skilled workforce, we are committed to delivering works of the highest quality, on schedule and at a reasonable cost.',
-						'We specialise in residential, industrial and commercial projects, working to a professional and transparent process that always puts client satisfaction first.',
+						'With the orientation of sustainable development and the goal of providing quality - optimal - effective construction solutions, Tin Phat was established to provide construction, investment - trade, project completion and technical solutions for businesses and projects nationwide.',
+						'Tin Phat always puts prestige - quality - progress as the guiding principle in all activities. We are proud to have a team of experienced engineers and technicians, a professional working process and strong construction capacity.',
+						'The company currently has more than 50 engineers and staff, over 250 permanent employees and 30 types of owned plant and equipment. Tin Phat is the construction contractor for numerous infrastructure projects of PetroVietnam Technical Services Corporation (PTSC), provincial transport project management boards and departments of transport.',
 					)
 				),
 		),
 	),
 
-	// ===== Thông điệp Giám đốc =====
 	'thong-diep-giam-doc' => array(
-		'content' => '<blockquote class="tp-quote"><p>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT xin gửi đến Quý Đối Tác, Quý Khách Hàng lời chúc sức khỏe, thành công và thịnh vượng.</p>'
-			. '<cite><strong>Bùi Đức Hùng</strong><br>Giám Đốc</cite></blockquote>'
+		'content' => '<blockquote class="tp-quote"><p>Tín Phát luôn đặt uy tín – chất lượng – tiến độ làm kim chỉ nam trong mọi hoạt động.</p>'
+			. '<cite><strong>Bùi Đức Hùng</strong><br>Giám đốc</cite></blockquote>'
 			. tp_paras(
 				array(
-					'Kính gửi: Quý Đối Tác – Quý Khách Hàng,',
-					'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT xin gửi đến Quý Đối Tác, Quý Khách Hàng lời chúc sức khỏe, thành công và thịnh vượng.',
-					'Với định hướng phát triển bền vững, chúng tôi cam kết mang đến những giải pháp xây dựng chất lượng cao, đáp ứng mọi nhu cầu về đầu tư, thương mại, hoàn thiện dự án và giải pháp kỹ thuật trên toàn quốc. Với phương châm hoạt động "Uy tín - Chất lượng - Tiến bộ", chúng tôi tự hào về đội ngũ kỹ sư, kỹ thuật viên giàu kinh nghiệm, quy trình làm việc chuyên nghiệp và năng lực thi công mạnh mẽ.',
-					'Mỗi công trình của chúng tôi đều thể hiện cam kết về chất lượng, an toàn và giá trị bền vững cho khách hàng. Chúng tôi mong muốn trở thành đối tác tin cậy, sẵn sàng đồng hành cùng Quý khách hàng trong tất cả các giai đoạn của dự án, từ tư vấn, thiết kế đến thi công, bàn giao và bảo trì dài hạn.',
-					'Chúng tôi rất mong nhận được sự tin tưởng, hợp tác và đồng hành của Quý Đối Tác, Quý Khách Hàng trong thời gian tới.',
+					'Kính gửi: Quý Đối Tác – Quý Khách Hàng',
+					'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT xin gửi đến Quý Khách hàng lời chào trân trọng và lời chúc sức khỏe, thành công và thịnh vượng.',
+					'Với định hướng phát triển bền vững và mục tiêu mang đến những giải pháp xây dựng chất lượng – tối ưu – hiệu quả, Tín Phát được thành lập nhằm cung cấp các dịch vụ thi công xây dựng, đầu tư – thương mại, hoàn thiện công trình và cung ứng giải pháp kỹ thuật cho doanh nghiệp và các dự án trên toàn quốc.',
+					'Tín Phát luôn đặt uy tín – chất lượng – tiến độ làm kim chỉ nam trong mọi hoạt động. Chúng tôi tự hào sở hữu đội ngũ kỹ sư – kỹ thuật viên giàu kinh nghiệm, quy trình làm việc chuyên nghiệp cùng năng lực thi công vững mạnh. Mỗi dự án mà Tín Phát thực hiện đều là sự cam kết về chất lượng, an toàn và giá trị bền vững cho khách hàng.',
+					'Với mong muốn trở thành đối tác tin cậy, Tín Phát luôn sẵn sàng đồng hành cùng Quý Khách hàng trong mọi giai đoạn của dự án, từ tư vấn giải pháp, triển khai thi công cho đến bàn giao và bảo trì dài hạn.',
+					'Chúng tôi rất mong tiếp tục nhận được sự tin tưởng, hợp tác và đồng hành của Quý Khách trong thời gian tới.',
 					'Trân trọng kính chào!',
+					'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT',
+				)
+			)
+			. '<h3 class="tp-mission">Lời cảm ơn</h3>'
+			. tp_paras(
+				array(
+					'CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI TÍN PHÁT xin gửi lời chào trân trọng và lời cảm ơn chân thành đến Quý Khách hàng đã luôn tin tưởng và đồng hành cùng chúng tôi.',
+					'Với định hướng phát triển bền vững, Tín Phát cam kết mang đến các giải pháp xây dựng chất lượng – uy tín – hiệu quả, cùng đội ngũ kỹ sư giàu kinh nghiệm và quy trình thi công chuyên nghiệp. Mỗi dự án của chúng tôi đều là sự cam kết về an toàn, tiến độ và giá trị bền vững.',
+					'Chúng tôi trân trọng sự hợp tác của Quý Khách hàng và mong tiếp tục đồng hành trong những dự án tiếp theo.',
 				)
 			),
 		'en'      => array(
 			'slug'    => 'directors-message',
-			'content' => '<blockquote class="tp-quote"><p>TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED wishes our Partners and Clients health, success and prosperity.</p>'
+			'content' => '<blockquote class="tp-quote"><p>Tin Phat always puts prestige – quality – progress as the guiding principle in all activities.</p>'
 				. '<cite><strong>Bui Duc Hung</strong><br>Director</cite></blockquote>'
 				. tp_paras(
 					array(
-						'Dear Partners and Clients,',
-						'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED wishes our Partners and Clients health, success and prosperity.',
-						'Guided by a strategy of sustainable growth, we are committed to delivering high-quality construction solutions that meet every need in investment, trade, project completion and technical services nationwide. Working to our motto "Integrity - Quality - Progress", we take pride in our experienced engineers and technicians, our professional working process and our strong construction capability.',
-						'Every project we deliver reflects our commitment to quality, safety and lasting value for our clients. We aim to be a trusted partner, ready to accompany you through every stage of a project — from consultancy and design to construction, handover and long-term maintenance.',
-						'We look forward to your continued trust, cooperation and partnership in the years ahead.',
-						'Yours sincerely,',
+						'Dear Partners - Customers',
+						'TIN PHAT TRADING CONSTRUCTION INVESTMENT COMPANY LIMITED would like to send our customers our best wishes for health, success and prosperity.',
+						'With the orientation of sustainable development and the goal of providing quality - optimal - effective construction solutions, Tin Phat was established to provide construction, investment - trade, project completion and technical solutions for businesses and projects nationwide.',
+						'Tin Phat always puts prestige - quality - progress as the guiding principle in all activities. We are proud to have a team of experienced engineers - technicians, professional working process and strong construction capacity. Every project that Tin Phat implements is a commitment to quality, safety and sustainable value for customers.',
+						'With the desire to become a trusted partner, Tin Phat is always ready to accompany customers in every stage of the project, from consulting solutions, implementing construction to handover and long-term maintenance.',
+						'We look forward to continuing to receive your trust, cooperation and companionship in the future.',
+						'Best regards!',
+						'TIN PHAT CONSTRUCTION TRADING INVESTMENT COMPANY LIMITED',
+					)
+				)
+				. '<h3 class="tp-mission">Thanks</h3>'
+				. tp_paras(
+					array(
+						'TIN PHAT INVESTMENT – CONSTRUCTION – TRADING CO., LTD would like to express our sincere thanks for your trust and cooperation.',
+						'With a commitment to sustainable development, we provide high-quality, reliable and efficient construction solutions, supported by an experienced engineering team and a professional working process. Every project reflects our dedication to safety, progress, and lasting value.',
+						'We truly appreciate your partnership and look forward to continuing our cooperation in future projects.',
 					)
 				),
 		),
 	),
+
 );
 
 /**

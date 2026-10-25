@@ -98,3 +98,29 @@ msgstr "Read more"
 #: home.php
 msgid "Tin tức khác"
 msgstr "Other news"
+
+#: template-parts/project/filter.php
+msgid "%d dự án"
+msgid_plural "%d dự án"
+msgstr[0] "%d project"
+msgstr[1] "%d projects"
+
+#: template-parts/project/card.php
+msgid "Xem chi tiết"
+msgstr "View details"
+
+#: archive-du-an.php
+msgid "Chưa có dự án nào."
+msgstr "No projects yet."
+
+#: template-parts/project/sidebar.php
+msgid "Dự án khác"
+msgstr "Other projects"
+
+#: single-du-an.php
+msgid "Hình ảnh thi công"
+msgstr "Construction photos"
+
+#: single-du-an.php
+msgid "Tất cả dự án"
+msgstr "All projects"

@@ -58,14 +58,12 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: filter 0.25s ease, opacity 0.25s ease;
+  /* Logo đối tác để nguyên màu gốc, không lọc xám. */
+  transition: opacity 0.25s ease;
 }
 
 .cc-root .tp-partner img:hover {
-  filter: grayscale(0);
-  opacity: 1;
+  opacity: 0.85;
 }
 
 /* ----- Icon SVG (thay Font Awesome) ----- */
@@ -88,4 +86,199 @@
 .cc-root .social .tp-icon {
   width: 1.05em;
   height: 1.05em;
+}
+
+/* ===== Dải khẩu hiệu (nội dung từ hồ sơ năng lực) ===== */
+.cc-root .tp-motto-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(220px, 32vw, 380px);
+  overflow: hidden;
+  background: #0f145b;
+}
+
+.cc-root .tp-motto-band__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Làm tối ảnh để chữ trắng luôn đạt tương phản AA. */
+  opacity: 0.38;
+}
+
+.cc-root .tp-motto-band__inner {
+  position: relative;
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}
+
+.cc-root .tp-motto-band__title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cc-root .tp-motto-band__sub {
+  margin: 0.75rem 0 0;
+  color: #e8eaf5;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ===== Giới thiệu ngắn trên trang chủ ===== */
+.cc-root .tp-home-about {
+  background: #f7f8fb;
+}
+
+.cc-root .tp-home-about__media {
+  margin: 0;
+  overflow: hidden;
+}
+
+.cc-root .tp-home-about__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.cc-root .tp-home-about__body {
+  padding-left: clamp(0rem, 2vw, 2rem);
+}
+
+.cc-root .tp-home-about__title {
+  margin: 0 0 0.85rem;
+  color: #0f145b;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cc-root .tp-home-about__lead {
+  margin: 0 0 0.85rem;
+  color: #b3541c;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.cc-root .tp-home-about__body p {
+  margin: 0 0 1.1rem;
+  color: #4b5563;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+/* ===== 4 lĩnh vực hoạt động ===== */
+.cc-root .tp-home-fields .row > div {
+  display: flex;
+}
+
+.cc-root .tp-home-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.cc-root .tp-home-field:hover {
+  border-color: #e17126;
+  box-shadow: 0 12px 32px rgb(15 20 91 / 10%);
+  transform: translateY(-4px);
+}
+
+.cc-root .tp-home-field__media {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.cc-root .tp-home-field__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.cc-root .tp-home-field:hover .tp-home-field__media img {
+  transform: scale(1.06);
+}
+
+/* Số thứ tự lĩnh vực, đặt chồng lên ảnh. */
+.cc-root .tp-home-field__num {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.3rem 0.85rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: #e17126;
+}
+
+.cc-root .tp-home-field__body {
+  flex: 1 1 auto;
+  padding: 1rem 1.1rem 1.25rem;
+}
+
+.cc-root .tp-home-field__body h3 {
+  margin: 0 0 0.45rem;
+  color: #0f145b;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cc-root .tp-home-field__body p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.cc-root .tp-home-fields__cta {
+  margin: 0.5rem 0 0;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .cc-root .tp-home-about__body {
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+}
+
+/* Mobile 2 cột: ép các thẻ cùng hàng cao bằng nhau. */
+@media (max-width: 767px) {
+  .cc-root .tp-home-fields .row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cc-root .tp-home-fields .row > div {
+    width: 100%;
+    max-width: none;
+    padding-inline: 0.4rem;
+  }
+
+  .cc-root .tp-home-field__body h3 {
+    font-size: 0.92rem;
+  }
+
+  .cc-root .tp-home-field__body p {
+    font-size: 0.84rem;
+  }
 }

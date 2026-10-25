@@ -90,9 +90,8 @@ function tpa_head( string $title, string $sub = '' ): string {
  *
  * @param string            $title Tiêu đề nhóm.
  * @param array<int,string> $files Tên file ảnh trong uploads/tinphat.
- * @param int               $cols  Số cột để chèn ô trống cho thẳng lưới.
  */
-function tpa_logo_group( string $title, array $files, int $cols = 5 ): string {
+function tpa_logo_group( string $title, array $files ): string {
 	$html = '<div class="tp-logo-group"><div class="tp-logo-group__head"><h2>' . esc_html( $title ) . '</h2></div>'
 		. '<div class="tp-logo-grid">';
 
@@ -102,13 +101,8 @@ function tpa_logo_group( string $title, array $files, int $cols = 5 ): string {
 			. '</div>';
 	}
 
-	// Ô trống để hàng cuối không bị hụt.
-	$remainder = count( $files ) % $cols;
-
-	if ( 0 !== $remainder ) {
-		$html .= str_repeat( '<div class="tp-logo-grid__cell tp-logo-grid__cell--empty"></div>', $cols - $remainder );
-	}
-
+	// Không chèn ô trống: số cột do CSS quyết định theo bề rộng màn hình,
+	// chèn thêm ở PHP sẽ thừa ô xám khi hai bên lệch nhau.
 	return $html . '</div></div>';
 }
 
@@ -191,34 +185,26 @@ function tpa_cta( string $title, string $desc, string $primary, string $primary_
 		. '</div></div>';
 }
 
-// MOCKUP: đây là logo khách hàng của Central, KHÔNG phải của Tín Phát.
-// Giữ lại để thấy bố cục; thay bằng logo thật khi khách gửi file.
-$mock_investors = array(
-	'partner-01-1200px-Vingroup-logo-svg.webp',
-	'partner-03-ssg-group-logo-1.webp',
-	'partner-05-logo-chu-dau-tu-van-xuan-land-group-1608.webp',
-	'partner-06-logo-masterise-group-1.webp',
-	'partner-11-LOGO-HUNG-VUONG-2.webp',
-	'partner-12-Phat-Dat-Logo-ngang-new-01.webp',
-	'partner-13-logo-saigon-pearl-1-1.webp',
-	'partner-15-logo-bim-group-2.webp',
-	'partner-08-ttc-logo-1.webp',
-	'partner-09-son-kim-1.webp',
+// 12 đối tác THẬT, logo trích từ hồ sơ năng lực (docs/PROFILE TIN PHAT IN.pdf).
+$partners_oil = array(
+	'tp-partner-02-ptsc-mc.png',
+	'tp-partner-03-ptsc-supply-base.png',
+	'tp-partner-11-long-son-port.png',
+	'tp-partner-08-pacific-industry.png',
 );
 
-$mock_contractors = array(
-	'partner-10-shimz.webp',
-	'partner-02-1200px-Tokyu-logo-svg.webp',
-	'partner-16-1584004197668-1583807295821-TTG-Logo-Hir.webp',
-	'partner-17-logo-bw-1.webp',
-	'partner-19-logo-en-1.webp',
+$partners_state = array(
+	'tp-partner-06-brvt.png',
+	'tp-partner-04-so-xd-dong-nai.png',
 );
 
-$mock_suppliers = array(
-	'partner-04-empire-city-logo2.webp',
-	'partner-07-hoa-lam.webp',
-	'partner-14-27587.webp',
-	'partner-18-EMASI-logo-6.webp',
+$partners_industry = array(
+	'tp-partner-01-phan-vu.png',
+	'tp-partner-09-hoa-phat.png',
+	'tp-partner-12-hoa-sen.png',
+	'tp-partner-05-an-lac.png',
+	'tp-partner-10-son-vu.png',
+	'tp-partner-07-fpt.png',
 );
 
 $pages = array(
@@ -229,9 +215,9 @@ $pages = array(
 			'<div class="tp-vision-page"><div class="tp-vision-page__inner">'
 			. tpa_title_section( 'Tầm nhìn', 'h2' )
 			. tpa_vision_hero(
-				'banner-17-DJI-0664-scaled.webp',
-				'Trở thành công ty xây dựng hàng đầu tại Thành phố Hồ Chí Minh, được Khách hàng tin tưởng và lựa chọn trong lĩnh vực xây dựng dân dụng, thương mại và công nghiệp.',
-				'Công trình do Tín Phát thi công'
+				'tp-cover-capability.webp',
+				'Trở thành một trong những doanh nghiệp xây dựng – đầu tư – thương mại uy tín tại Việt Nam, không ngừng đổi mới để mang lại các giải pháp thi công chất lượng, an toàn và bền vững cho các công trình trên toàn quốc.',
+				'Công trường do Tín Phát thi công'
 			)
 			. tpa_title_section( 'Giá trị cốt lõi', 'h2' )
 			. tpa_value_grid(
@@ -239,30 +225,20 @@ $pages = array(
 					array( 'image' => 'value.webp', 'alt' => 'Giá trị cốt lõi của Tín Phát' ),
 					array(
 						'icon'  => 'value-01.webp',
-						'title' => 'Uy tín',
-						'desc'  => 'Giữ đúng cam kết với Khách hàng, Đối tác và người lao động. Báo giá minh bạch, hợp đồng rõ ràng, nói được làm được — đây là nền tảng cho mọi quan hệ hợp tác lâu dài của Tín Phát.',
-					),
-					array(
-						'icon'  => 'value-02.webp',
-						'title' => 'Chất lượng',
-						'desc'  => 'Sử dụng vật liệu đạt chuẩn, thi công theo quy trình kiểm soát chặt chẽ ở từng hạng mục và bảo hành dài hạn. Chúng tôi chịu trách nhiệm đến cùng với chất lượng công trình đã bàn giao.',
-					),
-					array(
-						'icon'  => 'value-03.webp',
-						'title' => 'Đúng tiến độ',
-						'desc'  => 'Lập kế hoạch chi tiết cho từng giai đoạn, huy động đủ nhân lực và thiết bị để bàn giao đúng thời hạn đã ký. Tiến độ là cam kết, không phải mong muốn.',
+						'title' => 'Chất lượng – Đúng tiến độ',
+						'desc'  => 'Mang đến cho khách hàng các dịch vụ thi công xây dựng chuyên nghiệp, đúng tiến độ và đạt chuẩn chất lượng cao.',
 					),
 					array(
 						'icon'  => 'value-04.webp',
-						'title' => 'Tiến bộ',
-						'desc'  => 'Không ngừng cải tiến biện pháp thi công, cập nhật công nghệ và nâng cao tay nghề đội ngũ qua từng dự án, nhằm mang lại chi phí hợp lý hơn và chất lượng tốt hơn cho Khách hàng.',
+						'title' => 'Bền vững – Thân thiện môi trường',
+						'desc'  => 'Góp phần tạo nên những công trình vững bền, thân thiện môi trường và giá trị lâu dài cho cộng đồng.',
 					),
 					array(
 						'icon'  => 'value-05.webp',
-						'title' => 'Tận tâm',
-						'desc'  => 'Đặt sự hài lòng của Khách hàng lên hàng đầu: tư vấn miễn phí, đồng hành từ khâu thiết kế đến bàn giao và hỗ trợ lâu dài sau khi công trình đưa vào sử dụng.',
+						'title' => 'Con người – Tận tâm',
+						'desc'  => 'Xây dựng đội ngũ nhân sự có chuyên môn, trách nhiệm và tinh thần phục vụ tận tâm trong mọi giai đoạn dự án.',
 					),
-					array( 'image' => 'overview_2.webp', 'alt' => 'Công trường Tín Phát' ),
+					array( 'image' => 'tp-cover-projects.webp', 'alt' => 'Công trường Tín Phát' ),
 				)
 			)
 			. '</div></div>',
@@ -272,8 +248,8 @@ $pages = array(
 				'<div class="tp-vision-page"><div class="tp-vision-page__inner">'
 				. tpa_title_section( 'Our vision', 'h2' )
 				. tpa_vision_hero(
-					'banner-17-DJI-0664-scaled.webp',
-					'To become a leading construction company in Ho Chi Minh City, trusted and chosen by our Clients across residential, commercial and industrial construction.',
+					'tp-cover-capability.webp',
+					'To become a reputable construction – investment – trading enterprise in Vietnam, continuously innovating to deliver high-quality, safe and sustainable construction solutions for projects nationwide.',
 					'A project built by Tin Phat'
 				)
 				. tpa_title_section( 'Core values', 'h2' )
@@ -282,30 +258,20 @@ $pages = array(
 						array( 'image' => 'value.webp', 'alt' => 'Tin Phat core values' ),
 						array(
 							'icon'  => 'value-01.webp',
-							'title' => 'Integrity',
-							'desc'  => 'We keep our commitments to Clients, Partners and workers. Transparent quotations, clear contracts, and we do what we say — the foundation of every lasting relationship at Tin Phat.',
-						),
-						array(
-							'icon'  => 'value-02.webp',
-							'title' => 'Quality',
-							'desc'  => 'We use certified materials, build to a tightly controlled process at every stage and provide long-term warranty. We stand behind the quality of every project we hand over.',
-						),
-						array(
-							'icon'  => 'value-03.webp',
-							'title' => 'On schedule',
-							'desc'  => 'We plan each stage in detail and mobilise enough people and equipment to hand over on the agreed date. A schedule is a commitment, not an aspiration.',
+							'title' => 'Quality – On schedule',
+							'desc'  => 'Provide clients with professional construction services that meet schedule and deliver high-quality standards.',
 						),
 						array(
 							'icon'  => 'value-04.webp',
-							'title' => 'Progress',
-							'desc'  => 'We continuously improve our construction methods, adopt new technology and raise our teams skills project by project, to deliver better quality at a more reasonable cost.',
+							'title' => 'Durable – Environmentally friendly',
+							'desc'  => 'Contribute to creating durable, environmentally friendly and long-lasting projects for the community.',
 						),
 						array(
 							'icon'  => 'value-05.webp',
-							'title' => 'Dedication',
-							'desc'  => 'Client satisfaction comes first: free consultancy, support from design through handover, and long-term care once the building is in use.',
+							'title' => 'People – Dedication',
+							'desc'  => 'Build a workforce with expertise, responsibility and dedication to service excellence at every project stage.',
 						),
-						array( 'image' => 'overview_2.webp', 'alt' => 'A Tin Phat site' ),
+						array( 'image' => 'tp-cover-projects.webp', 'alt' => 'A Tin Phat site' ),
 					)
 				)
 				. '</div></div>',
@@ -316,47 +282,47 @@ $pages = array(
 	'doi-tac-khach-hang' => array(
 		'content' =>
 			'<h2 class="tp-lead">Đồng hành cùng Tín Phát</h2>'
-			. '<p class="tp-lead-desc">Hơn 10 năm và 100+ công trình hoàn thành cùng các chủ đầu tư, nhà thầu và nhà cung cấp</p>'
-			. '<p>Mỗi công trình hoàn thành là kết quả của sự hợp tác giữa Tín Phát với chủ đầu tư, các nhà thầu phụ và nhà cung cấp vật liệu. Chúng tôi xây dựng quan hệ đối tác dựa trên ba nguyên tắc: cam kết rõ ràng bằng hợp đồng, thanh toán đúng hạn và chất lượng được kiểm soát ở mọi khâu.</p>'
+			. '<p class="tp-lead-desc">70+ dự án cùng các chủ đầu tư ngành dầu khí, cảng biển và cơ quan quản lý nhà nước</p>'
+			. '<p>Tín Phát là nhà thầu thi công cho nhiều dự án hạ tầng thuộc Tổng Công ty CP Dịch vụ Kỹ thuật Dầu khí Việt Nam (PTSC), Cảng Quốc tế Long Sơn và các Ban QLDA giao thông cấp tỉnh. Chúng tôi xây dựng quan hệ đối tác dựa trên ba nguyên tắc: cam kết rõ ràng bằng hợp đồng, tiến độ đúng hạn và chất lượng được kiểm soát ở mọi khâu.</p>'
 			. '<p>Với khách hàng, chúng tôi đóng vai trò nhà thầu đồng hành từ bước tư vấn phương án, bóc tách khối lượng, thi công cho đến bàn giao và bảo hành. Với nhà thầu phụ và nhà cung cấp, chúng tôi là đối tác dài hạn, cùng chia sẻ tiêu chuẩn thi công và tiến độ.</p>'
 			. tpa_head( 'Lĩnh vực chúng tôi phục vụ' )
 			. tpa_sectors(
 				array(
 					array(
-						'image' => 'project-01-Emerald-Boulevard-Le-Phong.webp',
-						'title' => 'Xây dựng dân dụng',
+						'image' => 'tp-prj-dich-vu-dau-khi.webp',
+						'title' => 'Hạ tầng dầu khí & cảng biển',
 						'items' => array(
-							'Thiết kế và thi công nhà ở',
-							'Biệt thự, nhà phố cao cấp',
-							'Chung cư, khu đô thị',
-							'Cải tạo, sửa chữa nhà cũ',
+							'Đường nội bộ cảng PTSC',
+							'Sân bê tông, bãi đá',
+							'Kho hàng kín, nhà xưởng',
+							'Hệ thống thoát nước',
 						),
 					),
 					array(
-						'image' => 'project-16-Cot-dien-gio-tai-nha-may-Phu-Lac.webp',
-						'title' => 'Xây dựng công nghiệp',
+						'image' => 'tp-prj-duong-991.webp',
+						'title' => 'Giao thông đường bộ',
 						'items' => array(
-							'Nhà xưởng sản xuất',
-							'Kho bãi, logistics',
-							'Nhà máy, công trình công nghiệp',
-							'Hạ tầng kỹ thuật',
+							'Đường giao thông cấp IV',
+							'Cầu trên tuyến',
+							'Sửa chữa, nâng cấp mặt đường',
+							'Thảm bê tông nhựa',
 						),
 					),
 					array(
-						'image' => 'project-09-UOA.webp',
-						'title' => 'Xây dựng thương mại',
+						'image' => 'tp-prj-phao-con-dao.webp',
+						'title' => 'Đường thuỷ & hàng hải',
 						'items' => array(
-							'Văn phòng làm việc',
-							'Trung tâm thương mại',
-							'Khách sạn, resort',
-							'Nhà hàng, cafe',
+							'Hệ thống phao báo hiệu',
+							'Quản lý, bảo trì đường thuỷ nội địa',
+							'Công trình hàng hải',
+							'Khảo sát, đo đạc',
 						),
 					),
 				)
 			)
-			. tpa_logo_group( 'Chủ đầu tư', $mock_investors )
-			. tpa_logo_group( 'Đối tác thi công', $mock_contractors )
-			. tpa_logo_group( 'Nhà cung cấp vật liệu', $mock_suppliers )
+			. tpa_logo_group( 'Chủ đầu tư ngành dầu khí & cảng biển', $partners_oil )
+			. tpa_logo_group( 'Cơ quan quản lý nhà nước', $partners_state )
+			. tpa_logo_group( 'Đối tác công nghiệp & cung ứng', $partners_industry )
 			. tpa_cta(
 				'Trở thành đối tác của Tín Phát',
 				'Gửi yêu cầu báo giá hoặc hồ sơ hợp tác, chúng tôi phản hồi trong vòng 24 giờ làm việc.',
@@ -369,47 +335,47 @@ $pages = array(
 			'slug'    => 'partners-clients',
 			'content' =>
 				'<h2 class="tp-lead">Working with Tin Phat</h2>'
-				. '<p class="tp-lead-desc">Over 10 years and 100+ completed projects alongside investors, contractors and suppliers</p>'
-				. '<p>Every completed project is the result of collaboration between Tin Phat, the investor, our subcontractors and our material suppliers. We build partnerships on three principles: clear contractual commitments, payment on time, and quality controlled at every stage.</p>'
+				. '<p class="tp-lead-desc">70+ projects with oil and gas investors, seaport operators and state agencies</p>'
+				. '<p>Tin Phat is the construction contractor for numerous infrastructure projects of PetroVietnam Technical Services Corporation (PTSC), Long Son International Port and provincial transport project management boards. We build partnerships on three principles: clear contractual commitments, schedules kept on time, and quality controlled at every stage.</p>'
 				. '<p>For our clients we act as a contractor who stays involved from design advice and quantity take-off through construction, handover and warranty. For subcontractors and suppliers we are a long-term partner sharing the same construction standards and schedule discipline.</p>'
 				. tpa_head( 'Sectors we serve' )
 				. tpa_sectors(
 					array(
 						array(
-							'image' => 'project-01-Emerald-Boulevard-Le-Phong.webp',
-							'title' => 'Residential construction',
+							'image' => 'tp-prj-dich-vu-dau-khi.webp',
+							'title' => 'Oil, gas and seaport infrastructure',
 							'items' => array(
-								'House design and construction',
-								'Premium villas and townhouses',
-								'Apartment buildings and urban areas',
-								'Renovation and refurbishment',
+								'Internal roads at PTSC Port',
+								'Concrete yards and rock areas',
+								'Closed warehouses and factories',
+								'Drainage systems',
 							),
 						),
 						array(
-							'image' => 'project-16-Cot-dien-gio-tai-nha-may-Phu-Lac.webp',
-							'title' => 'Industrial construction',
+							'image' => 'tp-prj-duong-991.webp',
+							'title' => 'Road transport',
 							'items' => array(
-								'Manufacturing plants',
-								'Warehousing and logistics',
-								'Factories and industrial works',
-								'Technical infrastructure',
+								'Grade IV roads',
+								'Bridges on route',
+								'Road repair and upgrade',
+								'Asphalt concrete paving',
 							),
 						),
 						array(
-							'image' => 'project-09-UOA.webp',
-							'title' => 'Commercial construction',
+							'image' => 'tp-prj-phao-con-dao.webp',
+							'title' => 'Waterways and maritime',
 							'items' => array(
-								'Offices',
-								'Shopping centres',
-								'Hotels and resorts',
-								'Restaurants and cafés',
+								'Navigation buoy systems',
+								'Inland waterway management',
+								'Maritime works',
+								'Surveying and measurement',
 							),
 						),
 					)
 				)
-				. tpa_logo_group( 'Investors', $mock_investors )
-				. tpa_logo_group( 'Construction partners', $mock_contractors )
-				. tpa_logo_group( 'Material suppliers', $mock_suppliers )
+				. tpa_logo_group( 'Oil, gas and seaport investors', $partners_oil )
+				. tpa_logo_group( 'State management agencies', $partners_state )
+				. tpa_logo_group( 'Industrial and supply partners', $partners_industry )
 				. tpa_cta(
 					'Become a Tin Phat partner',
 					'Send us a quotation request or a partnership profile and we will reply within 24 working hours.',

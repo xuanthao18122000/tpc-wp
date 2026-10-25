@@ -1,8 +1,8 @@
 <?php
 /**
- * Thẻ tin trong lưới "Tin tức khác".
+ * Thẻ tin dạng danh sách ngang: ảnh trái, nội dung phải.
  *
- * Markup theo .news__page .other_post .item_post của template.
+ * Dùng chung bố cục với danh sách dự án (theo centralcons).
  *
  * @package TinPhat
  */
@@ -11,8 +11,8 @@ defined( 'ABSPATH' ) || exit;
 
 $tp_cats = get_the_category();
 ?>
-<div class="col-md-4">
-	<div class="item_post" data-aos="fade-up">
+<div class="col-md-12 col-12">
+	<div class="project_item project_list" data-aos="fade-up">
 		<figure>
 			<a href="<?php the_permalink(); ?>">
 				<?php
@@ -27,23 +27,29 @@ $tp_cats = get_the_category();
 						)
 					);
 				} else {
-					// MOCKUP: bài chưa có ảnh đại diện — giữ khung để lưới không vỡ.
+					// MOCKUP: bài chưa có ảnh đại diện.
 					echo '<span class="tp-thumb-placeholder" aria-hidden="true"></span>';
 				}
 				?>
 			</a>
 		</figure>
 
-		<div class="meta_post">
-			<?php get_template_part( 'template-parts/news/date-badge' ); ?>
+		<div class="project_meta">
+			<h3 class="fs-26 fw-bold"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-			<div class="post_info">
-				<h4 class="fs-16 fw-bold"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+			<p class="project_loc">
+				<time datetime="<?php echo esc_attr( (string) get_the_date( 'c' ) ); ?>">
+					<?php echo esc_html( (string) get_the_date( 'd/m/Y' ) ); ?>
+				</time>
 
 				<?php if ( ! empty( $tp_cats ) ) : ?>
-					<div class="post_cate fs-13"><?php echo esc_html( $tp_cats[0]->name ); ?></div>
+					<?php echo ' · ' . esc_html( $tp_cats[0]->name ); ?>
 				<?php endif; ?>
-			</div>
+			</p>
+
+			<div class="excerpt"><p><?php echo esc_html( wp_trim_words( (string) get_the_excerpt(), 34 ) ); ?></p></div>
+
+			<a href="<?php the_permalink(); ?>" class="read_more"><?php esc_html_e( 'Xem chi tiết', 'tinphat' ); ?></a>
 		</div>
 	</div>
 </div>

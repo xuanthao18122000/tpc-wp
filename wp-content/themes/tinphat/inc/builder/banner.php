@@ -141,7 +141,8 @@ class TinPhat_Banner_Item extends TinPhat_Shortcode {
 
 			<img src="<?php echo esc_url( $src ); ?>"
 				alt="<?php echo esc_attr( $atts['title'] ); ?>"
-				width="1920" height="1080"
+				<?php // Khớp kích thước thật của file banner (xem scripts/make-banners.php). ?>
+				width="2560" height="1440"
 				<?php // Slide đầu là ứng viên LCP: tải ngay, không lazy. ?>
 				<?php if ( $atts['eager'] ) : ?>
 					fetchpriority="high" decoding="async"

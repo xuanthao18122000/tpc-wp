@@ -41,3 +41,81 @@
   font-size: 1rem;
   font-weight: 700;
 }
+
+/* ----- Chú thích trên banner -----
+ * Template để 14px, quá nhỏ so với ảnh 1600x900. Phóng to và thêm
+ * bóng chữ để đọc được cả khi ảnh nền sáng.
+ */
+.cc-root .tp-banner__slider .description {
+  max-width: min(640px, 72%);
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.35;
+  text-shadow: 0 2px 16px rgb(0 0 0 / 55%);
+}
+
+/* ----- Nền bảo đảm tương phản cho chú thích -----
+ *
+ * Ảnh banner là ảnh thật, độ sáng ở vùng chữ thay đổi theo từng ảnh
+ * (nắng loá, mặt kính trắng). Nướng sẵn vệt tối vào ảnh thì phải tối
+ * rất sâu mới đủ cho ảnh sáng nhất, và khi đó ảnh bị bẩn.
+ *
+ * Thay vào đó phủ một lớp gradient ngay dưới khối chữ. Hai gradient
+ * chồng nhau theo kiểu background sẽ CỘNG độ đục, tạo mảng tối lan
+ * cả sang phải; nên ở đây dùng một gradient dọc rồi cắt bằng mask
+ * ngang — độ đục được NHÂN, lớp phủ tan hẳn trước khi hết bề ngang.
+ */
+
+/* .meta_info đã có position:absolute và z-index:2 trong template,
+   nên ::before chỉ cần z-index âm để nằm dưới chữ mà vẫn trên ảnh. */
+.cc-root #banner_site .item .meta_info::before {
+  position: absolute;
+  z-index: -1;
+
+  /* Khối chữ chỉ cao ~118px; kéo lớp phủ lên cao hơn để mép trên
+     tan dần vào ảnh thay vì cắt ngang một đường thẳng. */
+  inset: -190px 0 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgb(8 12 48 / 0%) 0%,
+    rgb(8 12 48 / 18%) 40%,
+    rgb(8 12 48 / 56%) 66%,
+    rgb(8 12 48 / 86%) 88%,
+    rgb(8 12 48 / 92%) 100%
+  );
+
+  /* Cắt dần sang phải: chữ dài nhất kết thúc quanh 50% bề ngang. */
+  mask-image: linear-gradient(
+    to right,
+    rgb(0 0 0 / 100%) 0%,
+    rgb(0 0 0 / 100%) 42%,
+    rgb(0 0 0 / 55%) 62%,
+    rgb(0 0 0 / 0%) 82%
+  );
+  content: "";
+}
+
+/* Trên mobile khối chữ rộng gần hết màn, cần phủ đều hơn. */
+@media (max-width: 767px) {
+  .cc-root #banner_site .item .meta_info::before {
+    inset: -110px 0 0;
+    mask-image: linear-gradient(
+      to right,
+      rgb(0 0 0 / 100%) 0%,
+      rgb(0 0 0 / 100%) 65%,
+      rgb(0 0 0 / 70%) 100%
+    );
+  }
+
+  /* Template ẩn chú thích dưới 768px, nhưng đây là thông điệp duy nhất
+     của banner — ẩn đi thì còn trơ lại dải tối không chữ. Hiện lại và
+     thu nhỏ cho vừa màn hình điện thoại. */
+  .cc-root #banner_site .item .meta_info .meta_inner .description {
+    display: block;
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}

@@ -19,3 +19,6 @@ require_once TINPHAT_DIR . '/inc/builder/career.php';
 require_once TINPHAT_DIR . '/inc/builder/culture.php';
 require_once TINPHAT_DIR . '/inc/builder/videos.php';
 require_once TINPHAT_DIR . '/inc/builder/partners.php';
+require_once TINPHAT_DIR . '/inc/builder/motto.php';
+require_once TINPHAT_DIR . '/inc/builder/about.php';
+require_once TINPHAT_DIR . '/inc/builder/fields.php';

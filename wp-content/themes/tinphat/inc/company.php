@@ -134,12 +134,16 @@ function tinphat_language_switcher(): void {
 	?>
 	<ul class="menu_lang">
 		<li>
-			<a href="#" onclick="return false;"><?php echo esc_html( strtoupper( $current['slug'] ) ); ?></a>
+			<a href="#" onclick="return false;">
+				<?php tinphat_language_flag( $current ); ?>
+				<span><?php echo esc_html( strtoupper( $current['slug'] ) ); ?></span>
+			</a>
 			<ul>
 				<?php foreach ( $others as $language ) : ?>
 					<li class="lang-item lang-item-<?php echo esc_attr( $language['slug'] ); ?>">
 						<a href="<?php echo esc_url( $language['url'] ); ?>" hreflang="<?php echo esc_attr( $language['slug'] ); ?>">
-							<?php echo esc_html( strtoupper( $language['slug'] ) ); ?>
+							<?php tinphat_language_flag( $language ); ?>
+							<span><?php echo esc_html( strtoupper( $language['slug'] ) ); ?></span>
 						</a>
 					</li>
 				<?php endforeach; ?>
@@ -150,25 +154,50 @@ function tinphat_language_switcher(): void {
 }
 
 /**
- * Bộ logo đối tác mẫu từ template.
+ * In lá cờ của một ngôn ngữ trong bộ chuyển ngôn ngữ.
  *
- * MOCKUP: đây là logo khách hàng của Central, KHÔNG phải của Tín Phát.
- * Chỉ dùng khi CPT `doi-tac` chưa có bài nào, để giữ bố cục trang chủ.
+ * Polylang trả URL ảnh cờ trong khoá 'flag' (ảnh PNG 16x11 nằm trong
+ * thư mục plugin). Chữ VI/EN ngay bên cạnh đã nói rõ ngôn ngữ nên cờ
+ * chỉ là trang trí — để alt rỗng cho trình đọc màn hình bỏ qua, tránh
+ * đọc lặp.
+ *
+ * @param array<string,mixed> $language Một phần tử từ pll_the_languages( raw ).
+ */
+function tinphat_language_flag( array $language ): void {
+	$flag = (string) ( $language['flag'] ?? '' );
+
+	if ( '' === $flag ) {
+		return;
+	}
+
+	printf(
+		'<img class="lang_flag" src="%s" alt="" width="16" height="11" decoding="async">',
+		esc_url( $flag )
+	);
+}
+
+/**
+ * Bộ 12 logo đối tác THẬT, trích từ hồ sơ năng lực
+ * (docs/PROFILE TIN PHAT IN.pdf, trang 19).
+ *
+ * Dùng khi CPT `doi-tac` chưa có bài nào.
  *
  * @return array<int,string>
  */
 function tinphat_sample_partner_logos(): array {
 	$files = array(
-		'partner-01-1200px-Vingroup-logo-svg.webp',
-		'partner-02-1200px-Tokyu-logo-svg.webp',
-		'partner-03-ssg-group-logo-1.webp',
-		'partner-04-empire-city-logo2.webp',
-		'partner-05-logo-chu-dau-tu-van-xuan-land-group-1608.webp',
-		'partner-06-logo-masterise-group-1.webp',
-		'partner-07-hoa-lam.webp',
-		'partner-08-ttc-logo-1.webp',
-		'partner-09-son-kim-1.webp',
-		'partner-10-shimz.webp',
+		'tp-partner-02-ptsc-mc.png',
+		'tp-partner-03-ptsc-supply-base.png',
+		'tp-partner-11-long-son-port.png',
+		'tp-partner-08-pacific-industry.png',
+		'tp-partner-06-brvt.png',
+		'tp-partner-04-so-xd-dong-nai.png',
+		'tp-partner-01-phan-vu.png',
+		'tp-partner-09-hoa-phat.png',
+		'tp-partner-12-hoa-sen.png',
+		'tp-partner-05-an-lac.png',
+		'tp-partner-10-son-vu.png',
+		'tp-partner-07-fpt.png',
 	);
 
 	return array_map( 'tinphat_uploads_url', $files );

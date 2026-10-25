@@ -10,6 +10,7 @@ import Swiper from 'swiper';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 /**
  * Đếm số từ 0 tới đích khi phần tử lọt vào khung nhìn.
@@ -58,27 +59,80 @@ function initCounters() {
 }
 
 /**
+ * Đánh dấu các slide "đang xem" của carousel dự án.
+ *
+ * Trang mẫu dùng slick: 3 slide giữa cùng mang .slick-active và cao
+ * 125%, hai slide ló ở mép thấp hơn (85%). Swiper không có sẵn cách
+ * gán như vậy nên tính tay quanh slide đang ở giữa.
+ *
+ * @param {import('swiper').Swiper} sw Thể hiện Swiper.
+ */
+function markActive(sw) {
+  // slidesPerView có thể là 'auto' (bề rộng do CSS quyết định); khi đó
+  // tính số slide lọt trong khung từ bề rộng thật của slide đầu tiên.
+  let shown = sw.params.slidesPerView;
+
+  if (typeof shown !== 'number') {
+    const first = sw.slides[0];
+    const w = first?.getBoundingClientRect().width || 0;
+    const cs = first ? getComputedStyle(first) : null;
+    const gap = cs ? parseFloat(cs.marginLeft) + parseFloat(cs.marginRight) : 0;
+    shown = w > 0 ? Math.floor(sw.width / (w + gap)) : 1;
+  }
+
+  const half = Math.floor(Math.max(1, shown) / 2);
+
+  sw.slides.forEach((slide, i) => {
+    // realIndex nằm giữa; lấy half slide mỗi bên.
+    const offset = i - sw.activeIndex;
+    slide.classList.toggle('slick-active', offset >= -half && offset <= half);
+  });
+}
+
+/**
  * Khởi tạo carousel dự án.
  */
 function initProjectSliders() {
-  const sliders = document.querySelectorAll('.tp-projects__slider');
+  const sliders = document.querySelectorAll('.slider_projects');
   if (sliders.length === 0) return;
 
   sliders.forEach((el) => {
     new Swiper(el, {
-      modules: [Navigation, Autoplay],
+      modules: [Navigation, Pagination, Autoplay],
+      // Trang mẫu: slide rộng 376px, bước nhảy 400px. Khoảng cách đã
+      // do .slider_projects .item { margin: 0 12px } trong template lo,
+      // nên KHÔNG đặt spaceBetween nữa — đặt thêm sẽ cộng dồn.
       slidesPerView: 1,
-      spaceBetween: 16,
+      spaceBetween: 0,
       loop: true,
+      centeredSlides: true,
       autoplay: { delay: 4000, pauseOnMouseEnter: true, disableOnInteraction: false },
+
+      // CSS của template viết cho slick, nơi CẢ 3 slide đang hiện đều
+      // mang class .slick-active (khung cao 125%), còn các slide ló ra
+      // ở mép thì thấp hơn (85%).
+      //
+      // Swiper chỉ gán slideActiveClass cho đúng một slide, còn
+      // slideVisibleClass lại gán cho cả slide mới ló một phần (thành
+      // 4 slide cao). Nên tự gán class: đúng 3 slide quanh slide giữa.
+      watchSlidesProgress: true,
+      on: {
+        init: markActive,
+        slideChange: markActive,
+        resize: markActive,
+      },
+
       navigation: {
-        prevEl: el.querySelector('.swiper-button-prev'),
-        nextEl: el.querySelector('.swiper-button-next'),
+        prevEl: el.querySelector('.left_nav'),
+        nextEl: el.querySelector('.right_nav'),
+      },
+      pagination: {
+        el: el.querySelector('.swiper-pagination'),
+        clickable: true,
       },
       breakpoints: {
         768: { slidesPerView: 2 },
-        992: { slidesPerView: 3 },
-        1200: { slidesPerView: 4 },
+        992: { slidesPerView: 'auto' },
       },
     });
   });

@@ -216,7 +216,11 @@ này cài lại thì tự hoạt động.
 php scripts/run.php scripts/seed-about-pages.php
 php scripts/run.php scripts/seed-contact-page.php
 php scripts/run.php scripts/seed-capability-pages.php
-php scripts/run.php scripts/seed-news-thumbnails.php
+php scripts/run.php scripts/seed-culture-video.php
+php scripts/run.php scripts/seed-real-projects.php
+php scripts/run.php scripts/seed-real-news.php
+php scripts/make-banners.php
+PDF_PYTHON=<python-co-pymupdf> php scripts/make-legal-image.php
 ```
 
 Runner nạp WordPress, giả lập lớp `WP_CLI` và **đặt user admin** — nếu
@@ -225,19 +229,97 @@ inline (user CLI mặc định không có quyền `unfiltered_html`).
 
 Mọi script trong `scripts/` chạy lại nhiều lần được, kết quả không đổi.
 
+## Nguồn dữ liệu: hồ sơ năng lực PDF
+
+Toàn bộ số liệu thật lấy từ `docs/PROFILE TIN PHAT IN.pdf` (21 trang, song ngữ):
+
+| Nội dung | Nguồn trong PDF |
+|---|---|
+| 12 dự án (chủ đầu tư, gói thầu, giá trị HĐ) | trang 14–18 |
+| Cấp công trình, ngày ký HĐ, ngày hoàn thành | trang 13 (bảng) |
+| Thư ngỏ + Lời cảm ơn (nguyên văn) | trang 4 và 21 |
+| Khẩu hiệu thương hiệu | trang 2 và 3 |
+| 29 loại thiết bị | trang 10 |
+| Nhân sự 50+/70+/250+, tỉ lệ bằng cấp | trang 9 |
+| Sơ đồ tổ chức 7 cấp | trang 8 |
+| 4 lĩnh vực hoạt động | trang 6 |
+| Tầm nhìn – sứ mệnh – 3 giá trị cốt lõi | trang 7 |
+| 12 logo đối tác | trang 19 |
+| Giám đốc Bùi Đức Hùng, MST, vốn điều lệ | trang 4 |
+
+Ảnh công trường và logo đối tác được trích trực tiếp từ PDF bằng PyMuPDF
+(`tp-prj-*.webp`, `tp-partner-*.png`, `tp-cover-*.webp`) — **ảnh thật của
+Tín Phát, không còn rủi ro bản quyền** như bộ ảnh mượn trước đây.
+
+**Ngành nghề thật**: hạ tầng dầu khí PTSC, đường giao thông, phao báo hiệu
+đường thuỷ — không phải biệt thự/chung cư như mockup ban đầu.
+
+### Trang Năng lực thi công
+
+`/vi/linh-vuc-hoat-dong/` dựng lại theo đúng bố cục hồ sơ PDF:
+
+- Nút **tải hồ sơ PDF** (file đặt ở `wp-content/uploads/tinphat-docs/`)
+- Dải số liệu 50+ / 70+ / 250+ / 30
+- 4 lĩnh vực hoạt động — ảnh xen kẽ trái/phải kèm tên tiếng Anh
+- Tầm nhìn – Sứ mệnh
+- Sơ đồ tổ chức 4 cấp (Giám đốc → Phó GĐ → 4 phòng → Ban chỉ huy)
+- Năng lực nhân sự + biểu đồ trình độ 70/20/10
+
+**Lưu ý số liệu**: PDF ghi **50+ kỹ sư, 70+ dự án, 250+ lao động thường
+xuyên**. Bản seed đầu tiên đảo nhầm 70 và 250 — đã sửa. Thiết bị là **30
+loại** (STT 01–15 và 16–30), không phải 29.
+
+File PDF nằm trong `uploads/` nên **không đưa lên git** (62MB). Khi deploy
+cần copy tay từ `docs/PROFILE TIN PHAT IN.pdf` sang
+`wp-content/uploads/tinphat-docs/ho-so-nang-luc-tin-phat.pdf`.
+
+### Nguồn thứ hai: folder hồ sơ thiết kế
+
+`docs/Hồ sơ thiết kế profile công ty Tín Phát/` chứa file gốc:
+
+| Thư mục | Dùng vào |
+|---|---|
+| `5. Hình ảnh thi công/` (108 ảnh, 7 dự án) | **38 ảnh** đã chọn → thư viện 12 dự án + banner |
+| `6. Logo đối tác/` (12 logo) | đã dùng (trích từ PDF, chất lượng tương đương) |
+| `4. Hợp đồng thi công/` (15 file) | **chưa dùng** — cần khách duyệt |
+| `2. Giấy ĐKKD/`, `3. Sơ đồ tổ chức/` | đã có nội dung tương ứng từ PDF |
+
+**Cách chọn ảnh**: xem từng contact sheet, loại ảnh tối, ảnh dọc, ảnh có
+bóng người chụp và khung bản đồ Google. Ảnh Đồng Nai bị cắt 22% dưới để
+bỏ overlay bản đồ.
+
+### Banner trang chủ
+
+4 banner tạo bằng `scripts/make-banners.php` từ ảnh thi công thật:
+cắt 16:9 → phủ gradient xanh thương hiệu (đậm trái 0.52 → nhạt phải 0.06)
+→ vạch cam. Chữ do HTML phủ lên (GD không render được tiếng Việt từ woff2).
+
+### Trang chi tiết tin & dự án
+
+Bố cục theo `centralcons.vn/le-cat-noc-du-an-masteri-dai-an/`:
+banner → menu chuyên mục → 2 cột (nội dung 8/12 + sidebar tin mới nhất 4/12)
+→ nút chia sẻ Facebook/LinkedIn.
+
+**8 bài tin** viết từ 12 dự án thật (ngày ký HĐ, giá trị, chủ đầu tư đều
+là số liệu thật trong hồ sơ) — **câu chữ do soạn lại, khách nên đọc duyệt**.
+
+### Phần PDF chưa dùng
+
+- **Hợp đồng dự án** (trang 20–23): ~50 ảnh scan hợp đồng có mộc đỏ và
+  chữ ký. Bằng chứng năng lực mạnh nhất nhưng chứa giá trị gói thầu và
+  điều khoản thanh toán — **cần khách duyệt** trước khi đăng.
+
+### Lưu ý: Quy trình thi công
+
+Trang `/vi/quy-trinh-thi-cong/` **không có nguồn trong PDF** — hồ sơ năng
+lực không có mục này. 6 bước hiện tại lấy từ bản Next.js cũ. Nếu khách có
+tài liệu quy trình riêng thì thay vào.
+
 ## Việc còn lại
 
-- [ ] **Logo đối tác thật**: trang `doi-tac-khach-hang` hiện dùng 19 logo
-      khách hàng của Central làm mockup, chia 3 nhóm (chủ đầu tư / đối tác
-      thi công / nhà cung cấp). Thay bằng logo thật rồi chạy lại
-      `scripts/seed-about-pages.php`.
 - [ ] Nội dung cho CPT văn hóa, video, tuyển dụng, đối tác (đã đăng ký, chưa có bài)
-- [ ] **Ảnh tin tức**: đang mượn ảnh công trình/phối cảnh trong uploads
-      làm ảnh đại diện. Các file `news-0X-*.webp` của template KHÔNG dùng
-      được vì in rõ logo CENTRAL. Thay ảnh thật rồi chạy lại
-      `scripts/seed-news-thumbnails.php`.
-- [ ] Thay ảnh mockup Central bằng ảnh thật của Tín Phát
-  (`uploads/tinphat/` còn nhiều ảnh mang thương hiệu Central)
+- [ ] Khách duyệt lại nội dung 8 bài tin tức: số liệu lấy từ hồ sơ năng lực
+      nhưng phần hành văn do mình viết.
 - [ ] Form liên hệ: tạo form trong WPForms rồi chạy lại
       `scripts/seed-contact-page.php` (script tự nhúng form đầu tiên)
 - [ ] Cấu hình cache theo hosting thật
